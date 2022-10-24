@@ -1,0 +1,133 @@
+form {
+    width: 521px;
+    height: 726px;
+    padding: 28px;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    box-shadow: 11px 11px 23px -11px rgba(0, 0, 0, 0.06);
+
+    fieldset {
+        margin-bottom: 7px;
+
+        legend {
+            margin-bottom: 5px;
+        }
+
+        .input-hidden {
+            display: none;
+        }
+
+        .input-label, #name-of-dog {
+            width: 140px;
+            height: 42px;
+            padding: 10px;
+            border: 2px solid #F17E5B;
+            border-radius: 6px;
+            margin: 5px 14px 5px 0;
+            
+            display: inline-block;
+            color: #F17E5B;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            line-height: 19px;
+            cursor: pointer;
+        }
+
+        #name-of-dog {
+            width: 192px;
+            display: block;
+            color: #000000;
+            text-align: left;
+            cursor: text;
+        }
+        
+        .input-hidden:checked + .input-label {
+            color: #FFFFFF;
+            background-color: #F17E5B;
+        }
+
+    }
+
+    .traits-checkbox {
+        label {
+            width: 134px;
+            height: 42px;
+            padding: 10px 26px;
+            line-height: 15px;
+        }
+    }
+
+    #image-upload-input {
+        margin-top: 14px;
+        display: block;
+
+        &::file-selector-button {
+            width: 136px;
+            height: 31px;
+            border: none;
+            border-radius: 6px;
+            margin-right: 10px;
+            background-color: #F17E5B;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+        }
+    }
+
+    /* breed */
+    .breed-dropdown {
+
+        select {
+            appearance: auto;
+            width: 262px;
+            height: 42px;
+            padding-left: 9px;
+            border: 2px solid #F17E5B;
+            border-radius: 6px;
+            margin-top: 6px;
+            margin-bottom: 7px;
+            font-size: 16px;
+
+            [value='keverék'] {
+                font-weight: 600;
+            }
+        }
+        
+        /* .css-b62m3t-container {
+            width: 300px;
+            margin: 5px 0;
+            border: 2px solid #F17E5B;
+            border-radius: 6px;
+
+            if no item is picked in dropdown
+            .css-1s2u09g-control {
+                border: none
+            }
+
+            if item is picked in dropdown
+            .css-1pahdxg-control {
+                border: none;
+                box-shadow: none;
+            }
+        } */
+    
+    }
+
+    button {
+        width: 220px;
+        height: 50px;
+        border-radius: 6px;
+
+        position: relative;
+        top: 33px;
+        left: 50%;
+        transform: translate(-50%);
+
+        text-align: center;
+        font-size: 16px;
+        background-color: #F17E5B;
+        color: #FFFFFF;
+    }
+}
+

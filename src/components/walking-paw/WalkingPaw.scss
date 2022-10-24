@@ -1,0 +1,53 @@
+.paw-animation-container {
+    position: relative;
+    /* top: 25%; */
+    left: 50%;
+    transform-origin: 50% 50%;
+    transform: rotate(90deg) translate(-50%, 0%);
+    width: 65px;
+    height: 153px;
+    
+    .paw-container {
+      width: 40px;
+          height: 40px;
+      
+          animation: 2050ms pawAnimation ease-in-out infinite;
+          opacity: 0;
+      
+      img{
+              width: 100%;
+              height: 100%;
+        transform: rotate(-90deg);
+          }
+      
+      &:nth-child(odd){
+              transform: rotate(-10deg);
+          }
+  
+          &:nth-child(even){
+              transform: rotate(10deg) translate(125%, 0);
+          }
+      
+              @for $i from 1 through 24{
+              &:nth-child(#{$i}){
+                  animation-delay: #{ (($i * -1)+24)*0.25 }s;
+              }
+          }
+  
+          .no-cssanimations &{
+              opacity: 1;
+          }
+    }
+  }
+  
+  @keyframes pawAnimation {
+      0%{
+          opacity: 1;
+      }
+      50%{
+          opacity: 0;
+      }
+      100%{
+          opacity: 0;
+      }
+  }

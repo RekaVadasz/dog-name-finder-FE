@@ -1,0 +1,31 @@
+.name-card {
+  width: 133px;
+  height: 53px;
+  padding: 10px;
+  border-radius: 6px;
+  margin-right: 21px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  position: relative;
+  display: inline-block;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 11px 11px 23px -11px rgba(0, 0, 0, 0.06);
+          box-shadow: 11px 11px 23px -11px rgba(0, 0, 0, 0.06);
+}
+
+.name-card div {
+  margin-right: 40px;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 34px;
+}
+
+.name-card img {
+  width: 32px;
+  position: absolute;
+  right: 8px;
+  top: 12px;
+  cursor: pointer;
+}
+/*# sourceMappingURL=NameCard.css.map */

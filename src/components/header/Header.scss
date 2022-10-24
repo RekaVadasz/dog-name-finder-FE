@@ -1,0 +1,98 @@
+header {
+    width: 100%;
+    height: 72px;
+
+    padding: 0 75px;
+   
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    
+    background-color: #ffffff;
+    
+    box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.12);
+    
+    .header-container {
+        max-width: 1300px;
+        height: 72px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+    
+        .navbar-top {
+            display: flex;
+    
+            .logo {
+                width: 250px;
+                height: 60px;
+                background-image: url('../../assets/logo.png');
+                background-size: contain;
+                background-repeat: no-repeat;
+                cursor: pointer;
+    
+            }
+            
+            nav {
+                display: flex;
+
+                ul {
+                    padding: 0 45px;
+                    display: flex;
+                    align-items: center;
+                    column-gap: 25px;
+        
+                    li {
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: #F17E5B;
+                        cursor: pointer;
+                        list-style-type: none;
+                    
+                    }
+                }
+            }
+        }
+    
+        .login-register {
+            button {
+                width: 128px;
+                height: 40px;
+                text-align: center;
+                border: 2px solid  #F17E5B;
+                border-radius: 6px;
+            }
+    
+            .login-button {
+                color:#F17E5B;
+            }
+            
+            .register-button {
+                margin-left: 15px;
+                background-color: #F17E5B;
+                color: #FFFFFF;
+            }
+        }
+
+        .profile-logout {
+            width: 149px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            div {
+                margin-right: 39px;
+                color:#F17E5B;
+                font-weight: 500;
+            }
+
+            img {
+                cursor: pointer;
+            }
+        }
+
+    }    
+
+}

@@ -1,0 +1,171 @@
+.card-large {
+  width: 898px;
+  height: 547px;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: left;
+  background-color: #ffffff;
+  -webkit-box-shadow: 11px 11px 23px -11px rgba(0, 0, 0, 0.06);
+          box-shadow: 11px 11px 23px -11px rgba(0, 0, 0, 0.06);
+}
+
+.card-large .card-large-details {
+  width: 340px;
+  height: 100%;
+  position: relative;
+}
+
+.card-large .card-large-details .card-large-name-text {
+  color: #757575;
+}
+
+.card-large .card-large-details .card-large-name {
+  margin-bottom: 34px;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.card-large .card-large-details .card-large-breed-text, .card-large .card-large-details .card-large-gender-text, .card-large .card-large-details .card-large-size-text {
+  margin-bottom: 4px;
+  font-size: 16px;
+  color: #757575;
+}
+
+.card-large .card-large-details .card-large-breed, .card-large .card-large-details .card-large-gender, .card-large .card-large-details .card-large-size {
+  margin-bottom: 18px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.card-large .card-large-details .card-large-traits-text {
+  margin-bottom: 14px;
+  font-size: 16px;
+  color: #757575;
+}
+
+.card-large .card-large-details .card-large-traits div {
+  height: 35px;
+  padding: 6px 16px;
+  border: 2px solid #F17E5B;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  display: inline-block;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #F17E5B;
+}
+
+.card-large .card-large-details .card-large-likes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 53px;
+  margin-bottom: 6px;
+  position: absolute;
+  bottom: 29px;
+}
+
+.card-large .card-large-details .card-large-likes img {
+  margin-right: 8px;
+}
+
+.card-large .card-large-details .card-large-likes .card-large-likes-number {
+  display: inline-block;
+  font-size: 20px;
+}
+
+.card-large .card-large-details .card-large-uploader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  bottom: 0;
+}
+
+.card-large .card-large-details .card-large-uploader .card-large-uploader-text {
+  color: #757575;
+}
+
+.card-large .card-large-details .card-large-uploader .card-large-uploader-name {
+  height: 27px;
+  padding: 0 14px;
+  border-radius: 6px;
+  margin-left: 15px;
+  background-color: #EBE9EF;
+  line-height: 27px;
+  cursor: pointer;
+}
+
+.card-large .card-large-details .card-large-gender-icon {
+  position: absolute;
+  top: 163px;
+  right: 0;
+}
+
+.card-large .card-large-details .card-large-size-icon {
+  position: absolute;
+  top: 224px;
+  right: 0;
+}
+
+.card-large .card-large-image {
+  position: relative;
+}
+
+.card-large .card-large-image .card-large-dog-image-placeholder {
+  width: 507px;
+  height: 507px;
+  -o-object-fit: none;
+     object-fit: none;
+}
+
+.card-large .card-large-image .card-large-dog-image {
+  width: 507px;
+  height: 507px;
+  border-radius: 8px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card-large .card-large-image .card-large-dog-image-d-none {
+  display: none;
+}
+
+.card-large .card-large-image .card-large-close-icon {
+  width: 33px;
+  height: 33px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+}
+
+.card-large .card-large-image .card-large-favourite-icon {
+  width: 33px;
+  height: 33px;
+  position: absolute;
+  right: 8px;
+  bottom: 12px;
+  cursor: pointer;
+}
+/*# sourceMappingURL=DogCardLarge.css.map */

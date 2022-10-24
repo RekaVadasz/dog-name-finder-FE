@@ -1,0 +1,108 @@
+body {
+    min-height:100vh;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body::before {
+    content: '';
+    display: block;
+    height: 72px; /* Set same as header's height */
+}
+body::after {
+    content: '';
+    display: block;
+    height: 250px; /* Set same as footer's height */
+}
+
+main {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* label, option, button {
+    cursor: url('./assets/paw-cursor.svg'), pointer;
+} */
+
+footer {
+    position: absolute;
+    bottom: 0;
+}
+
+/* Page not found */
+
+.no-page-image-container {
+    width: calc(100vw + 75px);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: -75px;
+    background-color: #C9E2EB;
+
+}
+
+.no-page-image-container p {
+    position: absolute;
+    top: 223px;
+    font-size: 24px;
+}
+
+.no-page-image {
+    width: 405px;
+    height: 283px;
+    position: relative;
+    left: 75px;
+    background-image: url('./assets/sniffing-dog.gif');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* Profile page  */
+
+
+.profile-page-container {
+    padding-bottom: 28px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #FFF2EF;
+}
+
+.profile-page-container::before {
+    content: '';
+    max-width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color:  #FFF2EF;
+    z-index: -1;
+    
+}
+
+.profile-page-container h2 {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.profile-page-container .profile-right {
+    margin-bottom: 40px;
+}
+
+.profile-sent-names-container {
+    max-width: 521px;
+}
+
+.profile-page-container .dog-card-large-background {
+    background-color: rgba(255, 242, 239, 0.88);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}

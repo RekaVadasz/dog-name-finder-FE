@@ -1,0 +1,51 @@
+.login-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        font-size: 26px;
+        margin: 54px auto;
+        font-weight: 500;
+    }
+    
+    form {
+        width: 330px;
+        height: 384px;
+        padding: 53px;
+        border: 2px solid #F17E5B;
+        border-radius: 6px;
+        margin: 0 auto 12px;
+        position: relative;
+
+        label {
+            font-size: 14px;
+        }
+        
+        input {
+            width: 220px;
+            height: 42px;
+            border: 2px solid #F17E5B;
+            padding-left: 10px;
+            border-radius: 6px;
+            margin-bottom: 19px;
+            margin-top: 7px;
+            display: block;
+        }
+
+        .login-error-missing-fields {
+            width: fit-content;
+            height: 36px;
+            padding: 10px;
+            border-radius: 6px;
+            background-color: #FBC2B1;
+            position: absolute;
+            bottom: 128px;
+            font-size: 14px;
+        }
+    }
+
+    p {
+        margin-bottom: 52px;
+    }
+}

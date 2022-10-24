@@ -1,0 +1,100 @@
+.card-small {
+    width: 574px;
+    height: 271px;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    box-shadow: 11px 11px 23px -11px rgba(0, 0, 0, 0.06);
+
+    .card-small-details {
+        width: 289px;
+        height: 236px;
+        position: relative;
+
+        .card-small-name {
+            margin-bottom: 34px;
+            font-size: 32px;
+            font-weight: 500;
+        }
+
+        .card-small-breed-text {
+            margin-bottom: 4px;
+            font-size: 16px;
+            color: #757575;
+        }
+
+        .card-small-breed {
+            margin-bottom: 18px;
+            font-size: 20px ;
+        }
+
+        .card-small-traits-text {
+            margin-bottom: 14px;
+            font-size: 16px;
+            color: #757575;
+        }
+
+        .card-small-traits {
+            div {
+                height: 27px;
+                padding: 4px 16px;
+                border: 2px solid #F17E5B;
+                margin-right: 5px;
+                margin-bottom: 5px;
+                display: inline-block;
+                border-radius: 6px;
+                font-size: 12px;
+                font-weight: 500;
+                color: #F17E5B;
+            }
+        }  
+        
+        .card-small-gender-icon {
+            position: absolute;
+            top: 5px;
+            right: 0;
+        }
+
+        .card-small-size-icon {
+            position: absolute;
+            top: 71px;
+            right: 0;
+        }
+
+    }
+
+    .card-small-image {
+        position: relative;
+
+        .card-small-dog-image {
+            width: 236px;
+            height: 236px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .card-small-expand-icon {
+            width: 28px;
+            height: 28px;
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            cursor: pointer;
+            
+        }
+        
+        .card-small-favourite-icon {
+            width: 33px;
+            height: 33px;
+            position: absolute;
+            right: 8px;
+            bottom: 4px;
+            cursor: pointer;
+        }
+        
+    }
+}
