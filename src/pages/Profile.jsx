@@ -13,7 +13,10 @@ import { useContext } from 'react';
 
 export default function Profile() {
 
-    const url = './api/firebase'
+    // to run locally: "proxy": "http://localhost:5000", should be in package.json
+    //const url = './api/firebase'
+    
+    const url = 'https://doggobase-api.herokuapp.com/api/firebase'
     const { status, data } = useFetch(url);
     //console.log(status)  
 

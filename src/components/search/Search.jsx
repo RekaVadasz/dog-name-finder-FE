@@ -82,7 +82,8 @@ export default function Search({allDogs}) {
         inputs.traits.forEach(trait => traits += `&traits=${trait}`)
         //console.log(traits)
 
-        const url = `./api/search?gender=${gender}&size=${size}&breed=${breed}${traits}`
+        //const url = `./api/search?gender=${gender}&size=${size}&breed=${breed}${traits}`
+        const url = `https://doggobase-api.herokuapp.com/api/search?gender=${gender}&size=${size}&breed=${breed}${traits}`
         //console.log(url)
         setUrl(url);
     }
