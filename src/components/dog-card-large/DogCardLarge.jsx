@@ -18,7 +18,7 @@ import imagePlaceholder from '../../assets/digging-dog.png';
 
 export default function DogCardLarge({ dog, handleExpand }) {
 
-    console.log(dog)
+    //console.log(dog)
     const [isImageLoaded, setImageLoaded] = useState(false)
     const dogImage = dog.imageSrc;
 

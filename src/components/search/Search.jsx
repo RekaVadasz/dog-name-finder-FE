@@ -26,7 +26,7 @@ export default function Search({allDogs}) {
     const [ url, setUrl ] = useState('') 
 
     const { status, data } = useFetch(url);  
-    console.log(allDogs)
+    //console.log(allDogs)
     //console.log(data.length)
 
     const [dogBreeds, setDogBreeds] = useState([])
@@ -83,7 +83,7 @@ export default function Search({allDogs}) {
         //console.log(traits)
 
         //const url = `./api/search?gender=${gender}&size=${size}&breed=${breed}${traits}`
-        const url = `https://doggobase-api.herokuapp.com/api/search?gender=${gender}&size=${size}&breed=${breed}${traits}`
+        const url = `https://doggobase-api.onrender.com/api/search?gender=${gender}&size=${size}&breed=${breed}${traits}`
         //console.log(url)
         setUrl(url);
     }

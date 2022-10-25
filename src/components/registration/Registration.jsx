@@ -9,7 +9,7 @@ export default function Registration() {
     
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-    console.log(error)
+    //console.log(error)
 
     // - - - - handle submit - - - - 
 

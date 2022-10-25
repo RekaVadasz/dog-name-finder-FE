@@ -9,8 +9,8 @@ export function AuthProvider({children}) {
 
     const [userData, setUserData] = useState();
     const [isLoggedIn, setLoggedIn] = useState(false);
-    console.log(isLoggedIn)
-    console.log(userData)
+    //console.log(isLoggedIn)
+    //console.log(userData)
 
     const logIn = () => {
         setLoggedIn(true)
