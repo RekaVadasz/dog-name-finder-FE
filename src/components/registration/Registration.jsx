@@ -30,7 +30,7 @@ export default function Registration() {
 
         try {
             setLoading(true)
-            const response = await fetch('https://doggobase-api.herokuapp.com/register', {
+            const response = await fetch('https://doggobase-api.onrender.com/register', {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({'username': usernameRef.current.value, 'password': passwordRef.current.value})

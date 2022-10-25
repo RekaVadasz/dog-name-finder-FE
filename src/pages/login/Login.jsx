@@ -42,7 +42,7 @@ export default function Login() {
 
         try {
             setLoading(true)
-            const response = await fetch('https://doggobase-api.herokuapp.com/login', {
+            const response = await fetch('https://doggobase-api.onrender.com/login', {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({'username': usernameRef.current.value, 'password': passwordRef.current.value})

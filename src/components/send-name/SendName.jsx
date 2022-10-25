@@ -82,7 +82,7 @@ export default function SendName({allDogs}) {
         formData.append('object', JSON.stringify(inputs))
 
         
-        await fetch('https://doggobase-api.herokuapp.com/addnewdog', {
+        await fetch('https://doggobase-api.onrender.com/addnewdog', {
             method: "POST",
             //headers: { 'Content-Type': 'multipart/form-data' },
             body: formData
