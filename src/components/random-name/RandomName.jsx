@@ -4,7 +4,6 @@ import './RandomName.css';
 import NameCard from '../name-card/NameCard';
 
 export default function RandomName({allDogs}) {
-
     const [ randomDog, setRandomDog ] = useState();
     const [ ballClass, setBallClass ] = useState('yellow-ball')
 
@@ -16,7 +15,6 @@ export default function RandomName({allDogs}) {
             setBallClass('yellow-ball')
         }, 2000);
     }
-
 
     return (
         <section id='random-name-section'>

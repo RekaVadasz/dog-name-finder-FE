@@ -24,16 +24,13 @@
             width: 272px;
             height: 50px;
             border-radius: 6px;
-
             position: relative;
             top: 16px;
-
             text-align: center;
             font-size: 18px;
             background-color: #F17E5B;
             color: #FFFFFF;
         }
-
     }
 
     .ball-illustration {
@@ -43,11 +40,13 @@
             background-repeat: no-repeat;
             background-size: contain;
         }
+
         .barking-collie {
             width: 282px;
             height: 273px;
             background-image: url('../../assets/barking-collie.png');
         }
+
         .ball-curve {
             width: 847px;
             height: 215px;
@@ -94,7 +93,6 @@
                 transform: translateY(0);
             }
         }
-            
     }
 
     .name-card {
@@ -114,5 +112,4 @@
         left: 0;
         z-index: 99;
     }
-    
 }

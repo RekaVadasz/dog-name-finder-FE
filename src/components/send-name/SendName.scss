@@ -24,7 +24,6 @@ form {
             border: 2px solid #F17E5B;
             border-radius: 6px;
             margin: 5px 14px 5px 0;
-            
             display: inline-block;
             color: #F17E5B;
             font-size: 16px;
@@ -46,7 +45,6 @@ form {
             color: #FFFFFF;
             background-color: #F17E5B;
         }
-
     }
 
     .traits-checkbox {
@@ -75,7 +73,6 @@ form {
         }
     }
 
-    /* breed */
     .breed-dropdown {
 
         select {
@@ -93,25 +90,6 @@ form {
                 font-weight: 600;
             }
         }
-        
-        /* .css-b62m3t-container {
-            width: 300px;
-            margin: 5px 0;
-            border: 2px solid #F17E5B;
-            border-radius: 6px;
-
-            if no item is picked in dropdown
-            .css-1s2u09g-control {
-                border: none
-            }
-
-            if item is picked in dropdown
-            .css-1pahdxg-control {
-                border: none;
-                box-shadow: none;
-            }
-        } */
-    
     }
 
     button {

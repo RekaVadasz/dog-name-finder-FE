@@ -1,24 +1,18 @@
 import { useState, React } from 'react';
 import './DogCardLarge.css';
 
-//import dogImage from '../../assets/dog-images/Guba.jpg';
 import favouriteIcon from '../../assets/favourite-filled.svg';
-
 import femaleIcon from '../../assets/female.svg';
 import maleIcon from '../../assets/male.svg';
-
 import smallDogIcon from '../../assets/small-size-dog.png';
 import mediumDogIcon from '../../assets/medium-size-dog.png';
 import largeDogIcon from '../../assets/large-size-dog.png';
-
-
 import closeIcon from '../../assets/close-icon.svg';
 import heartIcon from '../../assets/heart-peach.svg';
 import imagePlaceholder from '../../assets/digging-dog.png';
 
 export default function DogCardLarge({ dog, handleExpand }) {
 
-    //console.log(dog)
     const [isImageLoaded, setImageLoaded] = useState(false)
     const dogImage = dog.imageSrc;
 
@@ -35,10 +29,8 @@ export default function DogCardLarge({ dog, handleExpand }) {
         }
     }
 
-
     return (
         <div className='card-large'>
-
             <div className='card-large-details'>
                 <div className='card-large-name-text'>név:</div>
                 <div className='card-large-name'>{dog.name}</div>
@@ -56,7 +48,6 @@ export default function DogCardLarge({ dog, handleExpand }) {
                         </div>
                     ))}
                 </div>
-
                 <div className='card-large-likes'>
                     <img className='card-large-heart-icon' src={heartIcon} alt='small heart' />
                     <div className='card-large-likes-number'>1</div>
@@ -73,9 +64,7 @@ export default function DogCardLarge({ dog, handleExpand }) {
                 <img src={femaleIcon} className='card-large-gender-icon' alt="female icon"/>}
                 
                 <img className='card-large-size-icon' src={dogSizeImage(dog.size)} alt='medium dog' />
-
             </div>
-
             <div className='card-large-image'>
                 {!isImageLoaded && <img className='card-large-dog-image-placeholder' src={imagePlaceholder} alt='dog digging'/>}
 
@@ -88,8 +77,6 @@ export default function DogCardLarge({ dog, handleExpand }) {
                 <img className='card-large-favourite-icon' src={favouriteIcon} alt='heart' />
                 <img className='card-large-close-icon' src={closeIcon} alt='close' onClick={handleExpand}/>
             </div>
-
         </div>
-
     )
 }

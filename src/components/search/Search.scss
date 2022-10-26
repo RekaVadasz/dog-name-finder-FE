@@ -26,12 +26,12 @@
 
         .search-form-container {
             margin-bottom: 60px;
+
             form {
                 width: 500px;
                 height: 588px;
                 padding: 23px;
                 border-radius: 6px;
-                
                 background-color: #FBFAFE;
                 box-shadow: 11px 16px 20px -5px rgba(0, 0, 0, 0.09);
 
@@ -53,7 +53,6 @@
                         border: 2px solid #F17E5B;
                         border-radius: 6px;
                         margin: 5px 14px 5px 0;
-                        
                         display: inline-block;
                         color: #F17E5B;
                         text-align: center;
@@ -65,30 +64,9 @@
                         color: #FFFFFF;
                         background-color: #F17E5B;
                     }
-                    
                 }
                 
-                /* breed */
                 .breed-dropdown {
-                    
-                    /*                     
-                    label {
-                        position: relative;
-                        
-                        &::before {
-                            content: '';
-                            width: 42px;
-                            height: 42px;
-                            border-radius: 6px;
-                            position: absolute;
-                            top: -12px;
-                            right: 0;
-                            background-color: #F17E5B;
-                            z-index: -10;
-                        }
-
-                    }    
-                    */
 
                     select {
                         appearance: auto;
@@ -102,27 +80,6 @@
                         font-size: 16px;
 
                     }
-                    
-                    /*                     
-                    .css-b62m3t-container {
-                    width: 300px;
-                    margin: 5px 0;
-                    border: 2px solid #F17E5B;
-                    border-radius: 6px;
-
-                        if no item is picked in dropdown
-                        .css-1s2u09g-control {
-                            border: none
-                        }
-
-                        if item is picked in dropdown 
-                        .css-1pahdxg-control {
-                            border: none;
-                            box-shadow: none;
-                        }
-                    }
-                    */                    
-                
                 }
 
                 button {
@@ -150,8 +107,6 @@
         position: relative;
         text-align: center;
 
-
-
         .no-result-found {
             max-width: 800px;
             padding: 30px;
@@ -169,19 +124,6 @@
             background-color: #FFF2EF;
             box-shadow: 4px 5px 6px 0px rgba(0, 0, 0, 0.08);
         }
-
-        /*         
-        &::before {
-        content: '';
-        max-width: 100%;
-        background-color: aqua;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: -1;
-        }
-        */    
 
         .dog-card-large-background {
             background-color: rgba(255, 242, 239, 0.88);
