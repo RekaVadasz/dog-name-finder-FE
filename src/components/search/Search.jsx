@@ -172,12 +172,12 @@ export default function Search({allDogs}) {
                         <fieldset className='breed-dropdown'>
                             <legend>Fajtája:</legend>
                             <label htmlFor="breed">
-{/*                                 <Select 
+                                {/* <Select 
                                     options={options} 
                                     value={breedInput}
                                     onChange={handleChangeSelect}
                                 />
- */}
+                                    */}
                                 <select name='breed' value={inputs.breed} onChange={handleChange}>
                                     <option value='mindegy'>mindegy</option>
                                     {dogBreeds.map((breed, index) => {
@@ -288,8 +288,10 @@ export default function Search({allDogs}) {
 
             </div>
 
+
             {status === 'fetching' && <Loader />}
 
+            <Loader />
             {status === 'fetched' && 
 
                 <div className='search-results-container'>
