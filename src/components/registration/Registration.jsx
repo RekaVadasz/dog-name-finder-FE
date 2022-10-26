@@ -2,16 +2,12 @@ import { React, useState, useRef } from 'react';
 import './Registration.css';
 
 export default function Registration() {
-    
     const usernameRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
     
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-    //console.log(error)
-
-    // - - - - handle submit - - - - 
 
     const handleSubmit = async function (e) {
         e.preventDefault();
@@ -20,14 +16,12 @@ export default function Registration() {
             setError('missing input')
             return
         }
-
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
             setError('passwords different')
             return
         }
 
         setError('')
-
         try {
             setLoading(true)
             const response = await fetch('https://doggobase-api.onrender.com/register', {
@@ -43,19 +37,15 @@ export default function Registration() {
                 passwordConfirmRef.current.value = null;
             }
         } catch {
-            // eg. network problem 
             setError('failed to create account')
         }
         setLoading(false)
-        console.log("posted")
     }
-
 
     return (
         <section id='registration-section'>
             <h2>Regisztráció</h2>
             <p>Regisztrált felhasználóként te is feltölthetsz új kutyákat az adatbázisba és el is mentheted a kedvenceidet!</p>
-
             <form action=''>
                 <legend>Ingyenes regisztráció</legend>
 
@@ -96,7 +86,6 @@ export default function Registration() {
 
                 <button onClick={handleSubmit} disabled={loading}>Regisztrálok</button>
             </form>
-
             <div className='sitting-jack-russel'></div>
         </section>
     )

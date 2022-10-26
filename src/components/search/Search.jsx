@@ -1,5 +1,4 @@
 import React, { useEffect, useState} from 'react';
-import Select from 'react-select';
 
 import useFetch from '../../hooks/useFetch';
 
@@ -8,7 +7,8 @@ import NameCard from '../name-card/NameCard';
 import './Search.css';
 import Loader from '../loader/Loader';
 
-
+/*
+import Select from 'react-select';
 const options = [
     { value: 'not defined', label: 'Mindegy' },
     { value: 'keverék', label: 'Keverék' },
@@ -20,18 +20,20 @@ const options = [
     { value: 'mudi', label: 'Mudi' },
     { value: 'törpespicc', label: 'Törpespicc' }
 ]
+<Select 
+    options={options} 
+    value={breedInput}
+    onChange={handleChangeSelect}
+/>
+*/
 
 export default function Search({allDogs}) {
 
     const [ url, setUrl ] = useState('') 
-
-    const { status, data } = useFetch(url);  
-    //console.log(allDogs)
-    //console.log(data.length)
-
     const [dogBreeds, setDogBreeds] = useState([])
     const [inputs, setInputs] = useState({gender: 'fiú', size: 'kicsi', breed: 'mindegy', traits: []});
-    //console.log(inputs)
+
+    const { status, data } = useFetch(url);  
 
     useEffect(() => {
         let dogBreeds = [];
@@ -43,15 +45,14 @@ export default function Search({allDogs}) {
         setDogBreeds(dogBreeds.sort())
     }, [allDogs])
 
-    // - - - -  input change handler - - - - 
+    // - - - -  input change handler: radio, select - - - - 
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}))
     }
 
-    // - - - -  input change handler - Checkboxes - - - - 
-
+    // - - - -  input change handler: checkboxes - - - - 
     const handleChangeCheckbox = (event) => {
         const name = event.target.name;
         const newTrait = event.target.value;
@@ -67,29 +68,23 @@ export default function Search({allDogs}) {
             console.log(newTraits)
             setInputs((values) => ({...values, [name]: newTraits}))
         }
-
     }
 
-    //- - - - - Submit Form - - - - - 
+    //- - - - - submit form handler - - - - - 
     const handleSubmit = e => {
         e.preventDefault();
-        //console.log(inputs)
+
         const gender = inputs.gender;
         const size = inputs.size;
         const breed = inputs.breed;
 
         let traits ='';
         inputs.traits.forEach(trait => traits += `&traits=${trait}`)
-        //console.log(traits)
 
-        //const url = `./api/search?gender=${gender}&size=${size}&breed=${breed}${traits}`
         const url = `https://doggobase-api.onrender.com/api/search?gender=${gender}&size=${size}&breed=${breed}${traits}`
-        //console.log(url)
         setUrl(url);
     }
  
-
-
     return (
         <section id='search-section'>
             
@@ -105,10 +100,8 @@ export default function Search({allDogs}) {
 
                 <div className='search-form-container'>
                     <form action="">
-
                         <fieldset className='gender-radio'>
                             <legend>Neme:</legend>
-
                             <input 
                                 className='input-hidden' 
                                 type='radio' 
@@ -119,7 +112,6 @@ export default function Search({allDogs}) {
                                 checked={inputs.gender === 'fiú'}
                             />
                             <label className='input-label' htmlFor="male">Fiú</label>
-
                             <input 
                                 className='input-hidden' 
                                 type='radio' 
@@ -131,10 +123,8 @@ export default function Search({allDogs}) {
                             />
                             <label className='input-label' htmlFor="female">Lány</label>
                         </fieldset>
-
                         <fieldset className='size-radio'>
                             <legend>Mérete:</legend>
-
                             <input 
                                 className='input-hidden' 
                                 type='radio' 
@@ -145,7 +135,6 @@ export default function Search({allDogs}) {
                                 checked={inputs.size === 'kicsi'}
                             />
                             <label className='input-label' htmlFor="small">Kicsi</label>
-
                             <input 
                                 className='input-hidden' 
                                 type='radio' 
@@ -156,7 +145,6 @@ export default function Search({allDogs}) {
                                 checked={inputs.size === 'közepes'}
                             />
                             <label className='input-label' htmlFor="medium">Közepes</label>
-
                             <input 
                                 className='input-hidden' 
                                 type='radio' 
@@ -168,16 +156,9 @@ export default function Search({allDogs}) {
                             />
                             <label className='input-label' htmlFor="large">Nagy</label>
                         </fieldset>
-
                         <fieldset className='breed-dropdown'>
                             <legend>Fajtája:</legend>
                             <label htmlFor="breed">
-{/*                                 <Select 
-                                    options={options} 
-                                    value={breedInput}
-                                    onChange={handleChangeSelect}
-                                />
- */}
                                 <select name='breed' value={inputs.breed} onChange={handleChange}>
                                     <option value='mindegy'>mindegy</option>
                                     {dogBreeds.map((breed, index) => {
@@ -186,10 +167,8 @@ export default function Search({allDogs}) {
                                 </select>
                             </label>
                         </fieldset>
-
                         <fieldset>
                             <legend>Egyéb jellemzők (opcionális):</legend>
-
                             <input 
                                 className='input-hidden' 
                                 type='checkbox' 
@@ -199,7 +178,6 @@ export default function Search({allDogs}) {
                                 onChange={handleChangeCheckbox}
                             />
                             <label className='input-label' htmlFor='smart' >Okos</label>
-
                             <input 
                                 className='input-hidden' 
                                 type='checkbox' 
@@ -209,7 +187,6 @@ export default function Search({allDogs}) {
                                 onChange={handleChangeCheckbox}
                                 />
                             <label className='input-label' htmlFor='playful'>Játékos</label>
-
                             <input 
                                 className='input-hidden' 
                                 type='checkbox' 
@@ -219,7 +196,6 @@ export default function Search({allDogs}) {
                                 onChange={handleChangeCheckbox}
                             />
                             <label className='input-label' htmlFor='fluffy'>Bundás</label>
-
                             <input 
                                 className='input-hidden' 
                                 type='checkbox' 
@@ -229,7 +205,6 @@ export default function Search({allDogs}) {
                                 onChange={handleChangeCheckbox}
                             />
                             <label className='input-label' htmlFor='shy'>Félénk</label>
-
                             <input 
                                 className='input-hidden' 
                                 type='checkbox' 
@@ -239,7 +214,6 @@ export default function Search({allDogs}) {
                                 onChange={handleChangeCheckbox}
                                 />
                             <label className='input-label' htmlFor='active'>Aktív</label>
-
                             <input 
                                 className='input-hidden' 
                                 type='checkbox' 
@@ -249,7 +223,6 @@ export default function Search({allDogs}) {
                                 onChange={handleChangeCheckbox}
                                 />
                             <label className='input-label' htmlFor='hungry'>Falánk</label>
-
                             <input 
                                 className='input-hidden' 
                                 type='checkbox' 
@@ -259,7 +232,6 @@ export default function Search({allDogs}) {
                                 onChange={handleChangeCheckbox}    
                             />
                             <label className='input-label' htmlFor='barking'>Ugatós</label>
-
                             <input 
                                 className='input-hidden' 
                                 type='checkbox' 
@@ -269,7 +241,6 @@ export default function Search({allDogs}) {
                                 onChange={handleChangeCheckbox}    
                             />
                             <label className='input-label' htmlFor='lazy'>Lusta</label>
-                            
                             <input 
                                 className='input-hidden' 
                                 type='checkbox' 
@@ -280,18 +251,14 @@ export default function Search({allDogs}) {
                             />
                             <label className='input-label' htmlFor='cuddly'>Bújós</label>
                         </fieldset>
-
                         <button onClick={handleSubmit}>Keresd!</button>
-
                     </form>
                 </div>
-
             </div>
 
             {status === 'fetching' && <Loader />}
 
             {status === 'fetched' && 
-
                 <div className='search-results-container'>
                     {
                     data.length === 0 
@@ -304,11 +271,7 @@ export default function Search({allDogs}) {
                         })}
                     </div>
                     }
-                </div>
-            }
-
-            
-
+                </div>}
         </section>
     )
 }

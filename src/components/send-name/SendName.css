@@ -8,7 +8,6 @@ form {
   background-color: #FFFFFF;
   -webkit-box-shadow: 11px 11px 23px -11px rgba(0, 0, 0, 0.06);
           box-shadow: 11px 11px 23px -11px rgba(0, 0, 0, 0.06);
-  /* breed */
 }
 
 form fieldset {
@@ -74,26 +73,6 @@ form #image-upload-input::file-selector-button {
   color: #ffffff;
   font-family: 'Montserrat', sans-serif;
   cursor: pointer;
-}
-
-form .breed-dropdown {
-  /* .css-b62m3t-container {
-            width: 300px;
-            margin: 5px 0;
-            border: 2px solid #F17E5B;
-            border-radius: 6px;
-
-            if no item is picked in dropdown
-            .css-1s2u09g-control {
-                border: none
-            }
-
-            if item is picked in dropdown
-            .css-1pahdxg-control {
-                border: none;
-                box-shadow: none;
-            }
-        } */
 }
 
 form .breed-dropdown select {

@@ -1,0 +1,26 @@
+.no-page-image-container {
+    width: calc(100vw + 75px);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: -75px;
+    background-color: #C9E2EB;
+
+    p {
+        position: absolute;
+        top: 223px;
+        font-size: 24px;
+    }
+
+    .no-page-image {
+        width: 405px;
+        height: 283px;
+        position: relative;
+        left: 75px;
+        background-image: url('../../assets/sniffing-dog.gif');
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}

@@ -7,19 +7,16 @@ import { useContext } from 'react';
 import { AuthProvider } from './contexts/AuthContext';
 import AuthContext from './contexts/AuthContext';
 
-import Home from './pages/Home';
-import NoPage from './pages/NoPage';
-import Profile from './pages/Profile';
+import Home from './pages/home/Home';
+import NoPage from './pages/nopage/NoPage';
+import Profile from './pages/profile/Profile';
 import Login from './pages/login/Login';
 
-
 function App() {
-
-    //const navigate = useNavigate();
     
     function PrivateRoute({ children }) {
         const { isLoggedIn } = useContext(AuthContext);
-        return isLoggedIn ? children : <Login />; // what if false? 
+        return isLoggedIn ? children : <Login />; 
     }
 
     return (

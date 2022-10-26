@@ -4,7 +4,6 @@ import questionIcon from '../../assets/circle-question-regular.svg';
 import DogCardLarge from '../dog-card-large/DogCardLarge';
 
 export default function NameCard({dog}) {
-
     const [ isExpanded, setExpanded ] = useState(false)
 
     const handleExpand = () => {
@@ -22,13 +21,11 @@ export default function NameCard({dog}) {
             />
         </div>
 
-        {
-        isExpanded
+        {isExpanded
         &&
         <div className='dog-card-large-background' onClick={handleExpand}>
             <DogCardLarge dog={dog} handleExpand={handleExpand}/>
-        </div>
-        }
+        </div>}
         </>
     )
 }

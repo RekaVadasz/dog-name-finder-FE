@@ -1,26 +1,10 @@
 import { useState, useEffect, useContext, React } from 'react';
-//import Select from 'react-select';
+import './SendName.css';
 
 import AuthContext from '../../contexts/AuthContext';
 
-
-import './SendName.css';
-
-const options = [
-    { value: 'not defined', label: 'Mindegy' },
-    { value: 'keverék', label: 'Keverék' },
-    { value: 'pumi', label: 'Pumi' },
-    { value: 'tacskó', label: 'Tacskó' },
-    { value: 'vizsla', label: 'Vizsla' },
-    { value: 'border collie', label: 'Border collie' },
-    { value: 'törpe pincser', label: 'Törpe pincser' },
-    { value: 'mudi', label: 'Mudi' },
-    { value: 'törpespicc', label: 'Törpespicc' }
-]
-
 export default function SendName({allDogs}) {
 
-    //console.log(allDogs)
     const { userData } = useContext(AuthContext);
     
     const [dogBreeds, setDogBreeds] = useState([])
@@ -39,18 +23,14 @@ export default function SendName({allDogs}) {
         setDogBreeds(dogBreeds.sort())
     }, [allDogs])
     
-    //console.log(dogBreeds)
-
-
-    // - - - -  input change handler - - - - 
+    // - - - -  input change handler: radio, select - - - - 
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}))
     }
 
-    // - - - -  input change handler - Checkboxes - - - - 
-
+    // - - - -  input change handler: checkboxes - - - - 
     const handleChangeCheckbox = (event) => {
         const name = event.target.name;
         const newTrait = event.target.value;
@@ -66,16 +46,14 @@ export default function SendName({allDogs}) {
            //console.log(newTraits)
             setInputs((values) => ({...values, [name]: newTraits}))
         }
-
     }
 
-    // - - - - input change handler - File - - - - 
+    // - - - - input change handler: file upload - - - - 
     const handleChangeFile = (event) => {
         setSelectedFile(event.target.files[0])
-        
     }
     
-    // - - - - handle Submit - - - - 
+    // - - - - handle form submit - - - - 
     const handleSubmit = async function(event) {
         event.preventDefault();
 
@@ -90,25 +68,14 @@ export default function SendName({allDogs}) {
         formData.append('file', selectedFile);
         formData.append('object', JSON.stringify(inputs))
 
-        // url = './addnewdog'
-        //https://doggobase-api.onrender.com/addnewdog
-        // to run locally: "proxy": "http://localhost:5000", should be in package.json
-
-        /* await fetch('/addnewdog', {
+        await fetch('https://doggobase-api.onrender.com/addnewdog', {
             method: "POST",
-            //headers: { 'Content-Type': 'multipart/form-data' },
             body: formData
-        }) */
-        
-        setInputs({uploader: userData.username, gender: 'fiú', size: 'kicsi', traits: []})
-        console.log("posted")
-
+        })
     }
 
     return (
-        
         <form>
-
             <fieldset>
                 <label htmlFor='name-of-dog'>Név:</label>
                 <input 
@@ -121,10 +88,8 @@ export default function SendName({allDogs}) {
                     onChange={handleChange}
                 />
             </fieldset>
-
             <fieldset className='gender-radio'>
                 <legend>Neme:</legend>
-
                 <input 
                     className='input-hidden'
                     type='radio' 
@@ -135,7 +100,6 @@ export default function SendName({allDogs}) {
                     checked={inputs.gender === 'fiú'}
                 />
                 <label className='input-label' htmlFor="male">Fiú</label>
-
                 <input 
                     className='input-hidden' 
                     type='radio' 
@@ -146,12 +110,9 @@ export default function SendName({allDogs}) {
                     checked={inputs.gender === 'lány'}
                     />
                 <label className='input-label' htmlFor="female">Lány</label>
-
             </fieldset>
-
             <fieldset className='size-radio'>
                 <legend>Mérete:</legend>
-
                 <input 
                     className='input-hidden' 
                     type='radio' 
@@ -162,7 +123,6 @@ export default function SendName({allDogs}) {
                     checked={inputs.size === 'kicsi'}
                 />
                 <label className='input-label' htmlFor="small">Kicsi</label>
-
                 <input 
                     className='input-hidden' 
                     type='radio' 
@@ -173,7 +133,6 @@ export default function SendName({allDogs}) {
                     checked={inputs.size === 'közepes'}
                 />
                 <label className='input-label' htmlFor="medium">Közepes</label>
-
                 <input 
                     className='input-hidden' 
                     type='radio' 
@@ -185,7 +144,6 @@ export default function SendName({allDogs}) {
                 />
                 <label className='input-label' htmlFor="large">Nagy</label>
             </fieldset>
-
             <fieldset className='breed-dropdown'>
                 <legend>Fajtája:</legend>
                 <label htmlFor="breed">
@@ -202,10 +160,8 @@ export default function SendName({allDogs}) {
                     </select>
                 </label>
             </fieldset>
-
             <fieldset className='traits-checkbox'>
                 <legend>Egyéb jellemzők (opcionális):</legend>
-
                 <input 
                     className='input-hidden' 
                     type='checkbox' 
@@ -215,7 +171,6 @@ export default function SendName({allDogs}) {
                     onChange={handleChangeCheckbox}
                 />
                 <label className='input-label' htmlFor='smart' >Okos</label>
-                
                 <input 
                     className='input-hidden' 
                     type='checkbox' 
@@ -225,7 +180,6 @@ export default function SendName({allDogs}) {
                     onChange={handleChangeCheckbox}
                 />
                 <label className='input-label' htmlFor='playful'>Játékos</label>
-                
                 <input 
                     className='input-hidden' 
                     type='checkbox' 
@@ -235,7 +189,6 @@ export default function SendName({allDogs}) {
                     onChange={handleChangeCheckbox}
                     />
                 <label className='input-label' htmlFor='fluffy'>Bundás</label>
-                
                 <input 
                     className='input-hidden' 
                     type='checkbox' 
@@ -245,7 +198,6 @@ export default function SendName({allDogs}) {
                     onChange={handleChangeCheckbox}
                     />
                 <label className='input-label' htmlFor='shy'>Félénk</label>
-                
                 <input 
                     className='input-hidden' 
                     type='checkbox' 
@@ -255,7 +207,6 @@ export default function SendName({allDogs}) {
                     onChange={handleChangeCheckbox}
                     />
                 <label className='input-label' htmlFor='active'>Aktív</label>
-                
                 <input 
                     className='input-hidden' 
                     type='checkbox' 
@@ -265,7 +216,6 @@ export default function SendName({allDogs}) {
                     onChange={handleChangeCheckbox}
                 />
                 <label className='input-label' htmlFor='hungry'>Falánk</label>
-                
                 <input 
                     className='input-hidden' 
                     type='checkbox' 
@@ -275,7 +225,6 @@ export default function SendName({allDogs}) {
                     onChange={handleChangeCheckbox}
                 />
                 <label className='input-label' htmlFor='barking'>Ugatós</label>
-                
                 <input 
                     className='input-hidden' 
                     type='checkbox' 
@@ -285,7 +234,6 @@ export default function SendName({allDogs}) {
                     onChange={handleChangeCheckbox}
                 />
                 <label className='input-label' htmlFor='cuddly'>Bújós</label>
-                
                 <input 
                     className='input-hidden' 
                     type='checkbox' 
@@ -296,7 +244,6 @@ export default function SendName({allDogs}) {
                 />
                 <label className='input-label' htmlFor='lazy'>Lusta</label>
             </fieldset>
-
             <label htmlFor='image-upload-input'>Kép feltöltése:</label>
             <input 
                 type='file'
@@ -305,14 +252,10 @@ export default function SendName({allDogs}) {
                 onChange={handleChangeFile}
                 required={true}
             />
-
     
             {error === 'missing input' && <div className='sendname-error-message'>Kérjük töltsd ki az összes beviteli mezőt!</div>}
 
             <button onClick={handleSubmit}>Beküldöm a kutyát!</button>
-
         </form>
-        
-
     )
 }

@@ -1,22 +1,73 @@
-import React from 'react';
+import { React, useContext } from 'react';
+import { HashLink } from 'react-router-hash-link';
+import { NavLink } from 'react-router-dom';
 import './Footer.css';
 
 import mailIcon from '../../assets/envelope-solid.svg';
 import githubIcon from '../../assets/github.svg';
 import linkedinIcon from '../../assets/linkedin.svg';
+import logoutIcon from '../../assets/logout.svg';
 
+import AuthContext from '../../contexts/AuthContext';
+
+const scrollWithOffset = (el) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = -120; 
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
+}
 
 export default function Footer() {
+    const { isLoggedIn, logOut } = useContext(AuthContext);
+
     return (
         <footer id='footer'>
             <div className='footer-container'>
                 <div className='logo'></div>
                 <div className='navbar-bottom'>
                     <nav>
-                        <ul>Névválasztó</ul>
-                        <ul>Keresés</ul>
-                        <ul>Beküldés</ul>
-                        <ul>Random</ul>
+                        <ul>
+                            <li>
+                                <HashLink 
+                                    smooth 
+                                    scroll={el => scrollWithOffset(el)}
+                                    to='/home#search-section'
+                                    >Névválasztó
+                                </HashLink>
+                            </li>
+                            <li>                                
+                                <HashLink 
+                                    smooth 
+                                    scroll={el => scrollWithOffset(el)}
+                                    to='/home#random-name-section'
+                                    >Random
+                                </HashLink>
+                            </li>
+
+                            {!isLoggedIn &&
+                            <>
+                                <li>
+                                    <NavLink to='/login'>Bejelentkezés</NavLink>
+                                </li>
+                                <li>
+                                    <HashLink
+                                        smooth
+                                        scroll={el => scrollWithOffset(el)}
+                                        to='/home#registration-section'
+                                        >Regisztráció
+                                    </HashLink>
+                                </li>
+                            </>}
+
+                            {isLoggedIn &&
+                            <>
+                                <li>
+                                    <NavLink to='/profile'>Profilom</NavLink>
+                                </li>
+                                <li onClick={logOut}>
+                                    Kijelentkezés
+                                </li>
+                            </>}
+                        </ul>
                     </nav>
                 </div>
                 <div className='contact'>
@@ -31,7 +82,6 @@ export default function Footer() {
                     </a>
                 </div>
             </div>
-
         </footer>
     )
 }
