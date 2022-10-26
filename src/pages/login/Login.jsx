@@ -23,7 +23,7 @@ export default function Login() {
     const passwordRef = useRef();
 
     const [error, setError] = useState('');
-    console.log(error)
+    //console.log(error)
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
