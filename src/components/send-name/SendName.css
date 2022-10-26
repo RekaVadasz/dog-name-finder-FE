@@ -1,9 +1,10 @@
 @charset "UTF-8";
 form {
   width: 521px;
-  height: 726px;
+  height: 755px;
   padding: 28px;
   border-radius: 6px;
+  position: relative;
   background-color: #FFFFFF;
   -webkit-box-shadow: 11px 11px 23px -11px rgba(0, 0, 0, 0.06);
           box-shadow: 11px 11px 23px -11px rgba(0, 0, 0, 0.06);
@@ -113,12 +114,24 @@ form .breed-dropdown select [value='keverék'] {
   font-weight: 600;
 }
 
+form .sendname-error-message {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 37px;
+  padding: 11px;
+  border-radius: 6px;
+  position: absolute;
+  bottom: 102px;
+  background-color: #FBC2B1;
+}
+
 form button {
   width: 220px;
   height: 50px;
   border-radius: 6px;
   position: relative;
-  top: 33px;
+  top: 50px;
   left: 50%;
   -webkit-transform: translate(-50%);
           transform: translate(-50%);

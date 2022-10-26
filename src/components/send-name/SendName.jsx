@@ -26,6 +26,8 @@ export default function SendName({allDogs}) {
     const [dogBreeds, setDogBreeds] = useState([])
     const [inputs, setInputs] = useState({uploader: userData.username, gender: 'fiú', size: 'kicsi', traits: []});
     const [selectedFile, setSelectedFile] = useState(null);
+    const [error, setError] = useState('')
+    console.log(inputs)
     
     useEffect(() => {
         let dogBreeds = [];
@@ -77,17 +79,28 @@ export default function SendName({allDogs}) {
     const handleSubmit = async function(event) {
         event.preventDefault();
 
+        if (!inputs.name) { 
+            setError('missing input')
+            return
+        }
+
+        setError('')
+
         const formData = new FormData();
         formData.append('file', selectedFile);
         formData.append('object', JSON.stringify(inputs))
 
-        
-        await fetch('https://doggobase-api.onrender.com/addnewdog', {
+        // url = './addnewdog'
+        //https://doggobase-api.onrender.com/addnewdog
+        // to run locally: "proxy": "http://localhost:5000", should be in package.json
+
+        /* await fetch('/addnewdog', {
             method: "POST",
             //headers: { 'Content-Type': 'multipart/form-data' },
             body: formData
-        })
+        }) */
         
+        setInputs({uploader: userData.username, gender: 'fiú', size: 'kicsi', traits: []})
         console.log("posted")
 
     }
@@ -104,7 +117,7 @@ export default function SendName({allDogs}) {
                     id='name-of-dog' 
                     name='name' 
                     placeholder='Kutya neve'
-                    value={inputs.value}
+                    value={inputs.name}
                     onChange={handleChange}
                 />
             </fieldset>
@@ -292,6 +305,9 @@ export default function SendName({allDogs}) {
                 onChange={handleChangeFile}
                 required={true}
             />
+
+    
+            {error === 'missing input' && <div className='sendname-error-message'>Kérjük töltsd ki az összes beviteli mezőt!</div>}
 
             <button onClick={handleSubmit}>Beküldöm a kutyát!</button>
 
