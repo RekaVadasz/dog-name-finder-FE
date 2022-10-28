@@ -4,7 +4,7 @@ The goal of this React application is to collect common Hungarian dog names and 
 
 Logged in users can also add dogs with pictures and save their favourite dogs.
 
-The backend was created with Express.js and data is stored in Cloud Firestore.
+The backend was created with Node.js and data is stored in Cloud Firestore (data of dogs and user data with encrypted passwords).
 
 Backend repository: https://github.com/RekaVadasz/dog-name-finder-BE
 
@@ -13,6 +13,13 @@ Backend repository: https://github.com/RekaVadasz/dog-name-finder-BE
 Project is available at: https://courageous-lokum-e6dc50.netlify.app/
 
 *Please note that at first load the API response time is slow (30 sec) due to hosting limitations.*
+
+## 	:hammer_and_wrench: Work in progress - features to be implemented: 
+
+- upload image of new dog by users to an image hosting cloud
+- JWT (JSON Web Token) 
+- save favourite dogs of users (visible on profile)
+- ...
 
 ## Run app locally: 
 
