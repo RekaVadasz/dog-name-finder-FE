@@ -1,8 +1,9 @@
 form {
     width: 521px;
-    height: 726px;
+    height: 755px;
     padding: 28px;
     border-radius: 6px;
+    position: relative;
     background-color: #FFFFFF;
     box-shadow: 11px 11px 23px -11px rgba(0, 0, 0, 0.06);
 
@@ -94,6 +95,17 @@ form {
 
     .image-preview {
         height: 200px;
+
+    }
+    
+    .sendname-error-message {
+        width: fit-content;
+        height: 37px;
+        padding: 11px;
+        border-radius: 6px;
+        position: absolute;
+        bottom: 102px;
+        background-color: #FBC2B1;
     }
 
     button {
@@ -102,7 +114,7 @@ form {
         border-radius: 6px;
 
         position: relative;
-        top: 33px;
+        top: 50px;
         left: 50%;
         transform: translate(-50%);
 

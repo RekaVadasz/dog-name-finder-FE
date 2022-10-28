@@ -112,7 +112,7 @@ export default function SendName({allDogs}) {
                     id='name-of-dog' 
                     name='name' 
                     placeholder='Kutya neve'
-                    value={inputs.value}
+                    value={inputs.name}
                     onChange={handleChange}
                 />
             </fieldset>
