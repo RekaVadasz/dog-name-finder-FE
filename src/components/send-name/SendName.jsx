@@ -9,7 +9,13 @@ export default function SendName({allDogs}) {
     
     const [dogBreeds, setDogBreeds] = useState([])
     const [inputs, setInputs] = useState({uploader: userData.username, gender: 'fiú', size: 'kicsi', traits: []});
-    const [selectedFile, setSelectedFile] = useState(null);
+    
+    const [fileInputState, setFileInputState] = useState('');
+    //const [selectedFile, setSelectedFile] = useState('');
+    const [previewSource, setPreviewSource] = useState()
+
+    const [error, setError] = useState('');
+    console.log(inputs)
     
     useEffect(() => {
         let dogBreeds = [];
@@ -48,21 +54,52 @@ export default function SendName({allDogs}) {
 
     // - - - - input change handler: file upload - - - - 
     const handleChangeFile = (event) => {
-        setSelectedFile(event.target.files[0])
+        //setSelectedFile(event.target.files[0])
+        const file = event.target.files[0];
+        previewFile(file);
+        }
+
+    const previewFile = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setPreviewSource(reader.result)
+        }
     }
     
+
     // - - - - handle form submit - - - - 
     const handleSubmit = async function(event) {
         event.preventDefault();
 
+        if (!inputs.name || !inputs.breed || !previewSource) {
+            setError('missing field')
+            return
+        }
+        
+        setInputs((values) => ({...values, "image": previewSource}))
+
         const formData = new FormData();
-        formData.append('file', selectedFile);
+
+        //formData.append('file', selectedFile);
         formData.append('object', JSON.stringify(inputs))
 
-        await fetch('https://doggobase-api.onrender.com/addnewdog', {
+        try {
+            await fetch('./addnewdog', {
+                method: "POST",
+                body: formData
+            }) 
+        } catch (error) {
+            console.error(error)
+        }
+
+
+        /* await fetch('https://doggobase-api.onrender.com/addnewdog', {
             method: "POST",
             body: formData
-        })
+        }) */
+        console.log("posted")
+
     }
 
     return (
@@ -243,6 +280,8 @@ export default function SendName({allDogs}) {
                 onChange={handleChangeFile}
                 required={true}
             />
+            {previewSource && <img className='image-preview' src={previewSource} alt='dog'/>}
+            {error === 'missing field' && <div>Kérjük töltsd ki az összes beviteli mezőt!</div>}
             <button onClick={handleSubmit}>Beküldöm a kutyát!</button>
         </form>
     )

@@ -92,6 +92,10 @@ form .breed-dropdown select [value='keverék'] {
   font-weight: 600;
 }
 
+form .image-preview {
+  height: 200px;
+}
+
 form button {
   width: 220px;
   height: 50px;
