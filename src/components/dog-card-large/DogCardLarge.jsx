@@ -52,7 +52,7 @@ export default function DogCardLarge({ dog, handleExpand }) {
 
     const handleClick = async function() {
         setFavourite(!isFavourite);
-        const url = `./update?userId=${userData.userId}&favId=${dog.id}`;
+        const url = `https://doggobase-api.onrender.com/update?userId=${userData.userId}&favId=${dog.id}`;
         const requestOptions = {method: 'PUT'}
 
         try {
