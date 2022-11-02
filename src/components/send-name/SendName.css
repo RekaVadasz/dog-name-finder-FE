@@ -1,7 +1,6 @@
 @charset "UTF-8";
 form {
   width: 521px;
-  height: 755px;
   padding: 28px;
   border-radius: 6px;
   position: relative;
@@ -93,6 +92,10 @@ form .breed-dropdown select [value='keverék'] {
   font-weight: 600;
 }
 
+form .image-preview {
+  height: 200px;
+}
+
 form .sendname-error-message {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -109,8 +112,9 @@ form button {
   width: 220px;
   height: 50px;
   border-radius: 6px;
+  margin-top: 42px;
+  margin-bottom: 20px;
   position: relative;
-  top: 50px;
   left: 50%;
   -webkit-transform: translate(-50%);
           transform: translate(-50%);

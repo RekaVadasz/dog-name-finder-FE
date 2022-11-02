@@ -23,7 +23,7 @@ export default function NameCard({dog}) {
 
         {isExpanded
         &&
-        <div className='dog-card-large-background' onClick={handleExpand}>
+        <div className='dog-card-large-background'>
             <DogCardLarge dog={dog} handleExpand={handleExpand}/>
         </div>}
         </>

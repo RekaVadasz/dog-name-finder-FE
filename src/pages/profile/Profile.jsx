@@ -50,7 +50,7 @@ export default function Profile() {
                         &&
                         data
                             .filter(dog => {
-                                return userData.sent.includes(dog.id)
+                                return dog.uploader === userData.username
                             })
                             .map((dog) => {
                                 return (<NameCard dog={dog} key={dog.id}/>)

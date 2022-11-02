@@ -1,6 +1,5 @@
 form {
     width: 521px;
-    height: 755px;
     padding: 28px;
     border-radius: 6px;
     position: relative;
@@ -93,6 +92,11 @@ form {
         }
     }
 
+    .image-preview {
+        height: 200px;
+
+    }
+    
     .sendname-error-message {
         width: fit-content;
         height: 37px;
@@ -107,9 +111,10 @@ form {
         width: 220px;
         height: 50px;
         border-radius: 6px;
+        margin-top: 42px;
+        margin-bottom: 20px;
 
         position: relative;
-        top: 50px;
         left: 50%;
         transform: translate(-50%);
 
