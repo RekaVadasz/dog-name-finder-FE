@@ -1,7 +1,12 @@
-import { useState, React } from 'react';
+import { useState, useContext, React } from 'react';
 import './DogCardLarge.css';
 
+import AuthContext from '../../contexts/AuthContext';
+
+import useFetch from '../../hooks/useFetch';
+
 import favouriteIcon from '../../assets/favourite-filled.svg';
+import notFavouriteIcon from '../../assets/favourite-unfilled.svg';
 import femaleIcon from '../../assets/female.svg';
 import maleIcon from '../../assets/male.svg';
 import smallDogIcon from '../../assets/small-size-dog.png';
@@ -13,7 +18,16 @@ import imagePlaceholder from '../../assets/digging-dog.png';
 
 export default function DogCardLarge({ dog, handleExpand }) {
 
+    const { userData } = useContext(AuthContext);
+    
+    const isTrue = userData.favs.includes(dog.id)
+    
+    //const [ url, setUrl ] = useState('') 
     const [isImageLoaded, setImageLoaded] = useState(false)
+    const [isFavourite, setFavourite] = useState(isTrue)
+    
+    //const { status, data } = useFetch(url);
+
     const dogImage = dog.imageSrc;
 
     const dogSizeImage = function(size) {
@@ -26,6 +40,19 @@ export default function DogCardLarge({ dog, handleExpand }) {
                 return largeDogIcon;
             default:
                 return null
+        }
+    }
+
+    const handleClick = async function() {
+        setFavourite(!isFavourite);
+        const url = `./update?userId=${userData.userId}&favId=${dog.id}`;
+        const requestOptions = {method: 'PUT'}
+
+        try {
+            const response = await fetch(url, requestOptions);
+            const data = await response.json();
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -74,7 +101,12 @@ export default function DogCardLarge({ dog, handleExpand }) {
                     alt='dog' 
                     onLoad={() => setImageLoaded(true)} 
                 />  
-                <img className='card-large-favourite-icon' src={favouriteIcon} alt='heart' />
+                <img 
+                    className='card-large-favourite-icon' 
+                    src={isFavourite? favouriteIcon : notFavouriteIcon} 
+                    alt='heart' 
+                    onClick={handleClick}
+                />
                 <img className='card-large-close-icon' src={closeIcon} alt='close' onClick={handleExpand}/>
             </div>
         </div>

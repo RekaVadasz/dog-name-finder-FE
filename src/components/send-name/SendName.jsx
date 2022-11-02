@@ -10,12 +10,9 @@ export default function SendName({allDogs}) {
     const [dogBreeds, setDogBreeds] = useState([])
     const [inputs, setInputs] = useState({uploader: userData.username, gender: 'fiú', size: 'kicsi', traits: []});
     
-    const [fileInputState, setFileInputState] = useState('');
-    //const [selectedFile, setSelectedFile] = useState('');
     const [previewSource, setPreviewSource] = useState()
 
     const [error, setError] = useState('');
-    console.log(inputs)
     
     useEffect(() => {
         let dogBreeds = [];
@@ -26,6 +23,10 @@ export default function SendName({allDogs}) {
         })
         setDogBreeds(dogBreeds.sort())
     }, [allDogs])
+
+    useEffect(() => {
+        setInputs((values) => ({...values, "image": previewSource}))
+    }, [previewSource])
     
     // - - - -  input change handler: radio, select - - - - 
     const handleChange = (event) => {
@@ -47,14 +48,12 @@ export default function SendName({allDogs}) {
 
         } else {
             const newTraits = traits.filter(trait => {return trait !== newTrait})
-           //console.log(newTraits)
             setInputs((values) => ({...values, [name]: newTraits}))
         }
     }
 
     // - - - - input change handler: file upload - - - - 
     const handleChangeFile = (event) => {
-        //setSelectedFile(event.target.files[0])
         const file = event.target.files[0];
         previewFile(file);
         }
@@ -63,10 +62,9 @@ export default function SendName({allDogs}) {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onloadend = () => {
-            setPreviewSource(reader.result)
+            setPreviewSource(reader.result);
         }
     }
-    
 
     // - - - - handle form submit - - - - 
     const handleSubmit = async function(event) {
@@ -77,29 +75,23 @@ export default function SendName({allDogs}) {
             return
         }
         
-        setInputs((values) => ({...values, "image": previewSource}))
-
         const formData = new FormData();
-
-        //formData.append('file', selectedFile);
         formData.append('object', JSON.stringify(inputs))
 
         try {
-            await fetch('./addnewdog', {
+            const response = await fetch('https://doggobase-api.onrender.com/addnewdog', {
                 method: "POST",
                 body: formData
-            }) 
+            })
+            if (response.status === 200) {
+                console.log("posted")
+            } else {
+                setError('posting failed')
+            }
         } catch (error) {
             console.error(error)
+            setError('posting failed')
         }
-
-
-        /* await fetch('https://doggobase-api.onrender.com/addnewdog', {
-            method: "POST",
-            body: formData
-        }) */
-        console.log("posted")
-
     }
 
     return (
@@ -282,6 +274,7 @@ export default function SendName({allDogs}) {
             />
             {previewSource && <img className='image-preview' src={previewSource} alt='dog'/>}
             {error === 'missing field' && <div>Kérjük töltsd ki az összes beviteli mezőt!</div>}
+            {error === 'posting failed' && <div>Nem sikerült beküldeni a kutyát.</div>}
             <button onClick={handleSubmit}>Beküldöm a kutyát!</button>
         </form>
     )
