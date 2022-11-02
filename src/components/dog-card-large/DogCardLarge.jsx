@@ -15,16 +15,15 @@ import largeDogIcon from '../../assets/large-size-dog.png';
 import closeIcon from '../../assets/close-icon.svg';
 import heartIcon from '../../assets/heart-peach.svg';
 import imagePlaceholder from '../../assets/digging-dog.png';
+import { useEffect } from 'react';
 
 export default function DogCardLarge({ dog, handleExpand }) {
 
-    const { userData } = useContext(AuthContext);
+    const { isLoggedIn, userData } = useContext(AuthContext);
+    console.log(isLoggedIn)
     
-    const isTrue = userData.favs.includes(dog.id)
-    
-    //const [ url, setUrl ] = useState('') 
     const [isImageLoaded, setImageLoaded] = useState(false)
-    const [isFavourite, setFavourite] = useState(isTrue)
+    const [isFavourite, setFavourite] = useState(false)
     
     //const { status, data } = useFetch(url);
 
@@ -42,6 +41,14 @@ export default function DogCardLarge({ dog, handleExpand }) {
                 return null
         }
     }
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            const isTrue = userData.favs.includes(dog.id);
+            setFavourite(isTrue)
+        } 
+    }, [isLoggedIn])
+    
 
     const handleClick = async function() {
         setFavourite(!isFavourite);
@@ -101,12 +108,15 @@ export default function DogCardLarge({ dog, handleExpand }) {
                     alt='dog' 
                     onLoad={() => setImageLoaded(true)} 
                 />  
+
+                {isLoggedIn &&
                 <img 
                     className='card-large-favourite-icon' 
                     src={isFavourite? favouriteIcon : notFavouriteIcon} 
                     alt='heart' 
                     onClick={handleClick}
-                />
+                />}
+                
                 <img className='card-large-close-icon' src={closeIcon} alt='close' onClick={handleExpand}/>
             </div>
         </div>
