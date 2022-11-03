@@ -1,5 +1,5 @@
 .name-card {
-  width: 133px;
+  min-width: 133px;
   height: 53px;
   padding: 10px;
   border-radius: 6px;

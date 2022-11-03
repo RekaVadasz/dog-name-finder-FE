@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext, React } from 'react';
+import CreatableSelect from 'react-select/creatable';
 import './SendName.css';
 
 import Loader from '../../components/loader/Loader';
@@ -12,11 +13,23 @@ export default function SendName({allDogs}) {
     const [isLoading, setLoading] = useState(false)
     const [dogBreeds, setDogBreeds] = useState([])
     const [inputs, setInputs] = useState({uploader: userData.username, gender: 'fiú', size: 'kicsi', traits: []});
-    
     const [previewSource, setPreviewSource] = useState()
-
     const [error, setError] = useState('');
-    
+
+    const options = dogBreeds.map((breed) => {
+        return ({value: breed, label: breed})
+    })
+
+    const colorStyles = {
+        control: (styles) => ({...styles, 
+            width: '293px',
+            height: '42px', 
+            border: '2px solid #F17E5B', 
+            borderRadius: '6px', 
+            margin: '10px 0 5px'
+        })
+    }
+
     useEffect(() => {
         let dogBreeds = [];
         allDogs.forEach(dog => {
@@ -72,6 +85,12 @@ export default function SendName({allDogs}) {
         reader.onloadend = () => {
             setPreviewSource(reader.result);
         }
+    }
+
+    // - - - - - input change handler: Select - - - - 
+    const handleChangeSelect = (selectedOption) => {
+        console.log(selectedOption)
+        setInputs((values) => ({...values, breed: selectedOption.value}))
     }
 
     // - - - - handle form submit - - - - 
@@ -175,7 +194,8 @@ export default function SendName({allDogs}) {
                 />
                 <label className='input-label' htmlFor="large">Nagy</label>
             </fieldset>
-            <fieldset className='breed-dropdown'>
+
+            {/* <fieldset className='breed-dropdown'>
                 <legend>Fajtája:</legend>
                 <label htmlFor="breed">
                     <select 
@@ -190,7 +210,13 @@ export default function SendName({allDogs}) {
                         })}
                     </select>
                 </label>
+            </fieldset> */}
+
+            <fieldset>
+                <legend>Fajtája:</legend>
+                <CreatableSelect options={options} onChange={handleChangeSelect} styles={colorStyles}/>
             </fieldset>
+
             <fieldset className='traits-checkbox'>
                 <legend>Egyéb jellemzők (opcionális):</legend>
                 <input 
