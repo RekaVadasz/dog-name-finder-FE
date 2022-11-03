@@ -58,12 +58,12 @@ export default function SendName({allDogs}) {
     // - - - - input change handler: file upload - - - - 
     const handleChangeFile = (event) => {
         const file = event.target.files[0];
-        if (file.size > 768000) {
+        if (file.size > 5242880) {
             setError('image too large')
         } else {
             setError('')
+            previewFile(file);
         }
-        previewFile(file);
     }
 
     const previewFile = (file) => {
@@ -82,20 +82,20 @@ export default function SendName({allDogs}) {
             setError('missing field')
             return
         }
-        console.log(inputs)
-        const formData = new FormData();
-        formData.append('object', JSON.stringify(inputs))
 
         try {
-            setLoading(true)
+            setLoading(true);
+            
             const response = await fetch('https://doggobase-api.onrender.com/addnewdog', {
                 method: "POST",
-                body: formData
+                body: JSON.stringify(inputs), 
+                headers: {
+                    'Content-type': 'application/json'
+                }
             })
             if (response.status === 200) {
                 setError('dog posted')
                 setLoading(false)
-                console.log("posted")
             } else {
                 setError('posting failed')
             }
@@ -288,7 +288,7 @@ export default function SendName({allDogs}) {
             {error === 'missing field' && <div className='sendname-error-message'>Kérjük töltsd ki az összes beviteli mezőt!</div>}
             {error === 'posting failed' && <div className='sendname-error-message'>Nem sikerült beküldeni a kutyát.</div>}
             {error === 'dog posted' && <div className='sendname-error-message upload-success'>Sikeres beküldés!</div>}
-            {error === 'image too large' && <div className='sendname-error-message'>Túl nagy a kép mérete - max. méret: 750 kb</div>}
+            {error === 'image too large' && <div className='sendname-error-message'>Túl nagy a kép mérete - max. méret: 5 mB</div>}
 
             <button onClick={handleSubmit}>Beküldöm a kutyát!</button>
 
