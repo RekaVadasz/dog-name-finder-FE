@@ -1,4 +1,5 @@
 import React, { useEffect, useState} from 'react';
+import Select from 'react-select';
 
 import useFetch from '../../hooks/useFetch';
 
@@ -7,33 +8,27 @@ import NameCard from '../name-card/NameCard';
 import './Search.css';
 import Loader from '../loader/Loader';
 
-/*
-import Select from 'react-select';
-const options = [
-    { value: 'not defined', label: 'Mindegy' },
-    { value: 'keverék', label: 'Keverék' },
-    { value: 'pumi', label: 'Pumi' },
-    { value: 'tacskó', label: 'Tacskó' },
-    { value: 'vizsla', label: 'Vizsla' },
-    { value: 'border collie', label: 'Border collie' },
-    { value: 'törpe pincser', label: 'Törpe pincser' },
-    { value: 'mudi', label: 'Mudi' },
-    { value: 'törpespicc', label: 'Törpespicc' }
-]
-<Select 
-    options={options} 
-    value={breedInput}
-    onChange={handleChangeSelect}
-/>
-*/
-
 export default function Search({allDogs}) {
 
     const [ url, setUrl ] = useState('') 
     const [dogBreeds, setDogBreeds] = useState([])
     const [inputs, setInputs] = useState({gender: 'fiú', size: 'kicsi', breed: 'mindegy', traits: []});
 
-    const { status, data } = useFetch(url);  
+    const { status, data } = useFetch(url); 
+    
+    const options = dogBreeds.map((breed) => {
+        return ({value: breed, label: breed})
+    })
+
+    const colorStyles = {
+        control: (styles) => ({...styles, 
+            width: '282px',
+            height: '42px', 
+            border: '2px solid #F17E5B', 
+            borderRadius: '6px', 
+            margin: '10px 0 5px'
+        })
+    }
 
     useEffect(() => {
         let dogBreeds = [];
@@ -68,6 +63,12 @@ export default function Search({allDogs}) {
             console.log(newTraits)
             setInputs((values) => ({...values, [name]: newTraits}))
         }
+    }
+
+    // - - - - - input change handler: Select - - - - 
+    const handleChangeSelect = (selectedOption) => {
+        console.log(selectedOption)
+        setInputs((values) => ({...values, breed: selectedOption.value}))
     }
 
     //- - - - - submit form handler - - - - - 
@@ -156,17 +157,12 @@ export default function Search({allDogs}) {
                             />
                             <label className='input-label' htmlFor="large">Nagy</label>
                         </fieldset>
-                        <fieldset className='breed-dropdown'>
+
+                        <fieldset>
                             <legend>Fajtája:</legend>
-                            <label htmlFor="breed">
-                                <select name='breed' value={inputs.breed} onChange={handleChange}>
-                                    <option value='mindegy'>mindegy</option>
-                                    {dogBreeds.map((breed, index) => {
-                                        return (<option key = {index} value={breed}>{breed}</option>)
-                                    })}
-                                </select>
-                            </label>
-                        </fieldset>
+                            <Select options={options} onChange={handleChangeSelect} styles={colorStyles} placeholder='Mindegy'/>
+                        </fieldset>            
+
                         <fieldset>
                             <legend>Egyéb jellemzők (opcionális):</legend>
                             <input 

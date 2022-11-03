@@ -44,7 +44,7 @@ export default function SendName({allDogs}) {
         setInputs((values) => ({...values, "image": previewSource}))
     }, [previewSource])
     
-    // - - - -  input change handler: radio, select - - - - 
+    // - - - -  input change handler: radio - - - - 
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
@@ -195,26 +195,9 @@ export default function SendName({allDogs}) {
                 <label className='input-label' htmlFor="large">Nagy</label>
             </fieldset>
 
-            {/* <fieldset className='breed-dropdown'>
-                <legend>Fajtája:</legend>
-                <label htmlFor="breed">
-                    <select 
-                        name='breed' 
-                        onChange={handleChange} 
-                        defaultValue='default'
-                        required={true} 
-                    >
-                        <option value='default' disabled={true}>Válassz egy fajtát!</option>
-                        {dogBreeds.map((breed, index) => {
-                            return (<option key={index} value={breed}>{breed}</option>)
-                        })}
-                    </select>
-                </label>
-            </fieldset> */}
-
             <fieldset>
                 <legend>Fajtája:</legend>
-                <CreatableSelect options={options} onChange={handleChangeSelect} styles={colorStyles}/>
+                <CreatableSelect options={options} onChange={handleChangeSelect} styles={colorStyles} placeholder='Válassz egy fajtát'/>
             </fieldset>
 
             <fieldset className='traits-checkbox'>
