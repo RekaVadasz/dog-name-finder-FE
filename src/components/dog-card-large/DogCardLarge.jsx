@@ -20,7 +20,6 @@ import { useEffect } from 'react';
 export default function DogCardLarge({ dog, handleExpand }) {
 
     const { isLoggedIn, userData } = useContext(AuthContext);
-    console.log(isLoggedIn)
     
     const [isImageLoaded, setImageLoaded] = useState(false)
     const [isFavourite, setFavourite] = useState(false)

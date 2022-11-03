@@ -94,6 +94,8 @@ form {
 
     .image-preview {
         height: 200px;
+        margin-top: 10px;
+        display: block;
 
     }
     
@@ -102,9 +104,12 @@ form {
         height: 37px;
         padding: 11px;
         border-radius: 6px;
-        position: absolute;
-        bottom: 102px;
+        margin: 15px 0;
         background-color: #FBC2B1;
+    }
+
+    .upload-success {
+        background-color: #B1FBBD;
     }
 
     button {
