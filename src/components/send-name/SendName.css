@@ -94,6 +94,8 @@ form .breed-dropdown select [value='keverék'] {
 
 form .image-preview {
   height: 200px;
+  margin-top: 10px;
+  display: block;
 }
 
 form .sendname-error-message {
@@ -103,9 +105,12 @@ form .sendname-error-message {
   height: 37px;
   padding: 11px;
   border-radius: 6px;
-  position: absolute;
-  bottom: 102px;
+  margin: 15px 0;
   background-color: #FBC2B1;
+}
+
+form .upload-success {
+  background-color: #B1FBBD;
 }
 
 form button {

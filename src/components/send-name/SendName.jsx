@@ -1,12 +1,15 @@
 import { useState, useEffect, useContext, React } from 'react';
 import './SendName.css';
 
+import Loader from '../../components/loader/Loader';
+
 import AuthContext from '../../contexts/AuthContext';
 
 export default function SendName({allDogs}) {
 
     const { userData } = useContext(AuthContext);
     
+    const [isLoading, setLoading] = useState(false)
     const [dogBreeds, setDogBreeds] = useState([])
     const [inputs, setInputs] = useState({uploader: userData.username, gender: 'fiú', size: 'kicsi', traits: []});
     
@@ -55,8 +58,13 @@ export default function SendName({allDogs}) {
     // - - - - input change handler: file upload - - - - 
     const handleChangeFile = (event) => {
         const file = event.target.files[0];
-        previewFile(file);
+        if (file.size > 768000) {
+            setError('image too large')
+        } else {
+            setError('')
         }
+        previewFile(file);
+    }
 
     const previewFile = (file) => {
         const reader = new FileReader();
@@ -74,16 +82,19 @@ export default function SendName({allDogs}) {
             setError('missing field')
             return
         }
-        
+        console.log(inputs)
         const formData = new FormData();
         formData.append('object', JSON.stringify(inputs))
 
         try {
+            setLoading(true)
             const response = await fetch('https://doggobase-api.onrender.com/addnewdog', {
                 method: "POST",
                 body: formData
             })
             if (response.status === 200) {
+                setError('dog posted')
+                setLoading(false)
                 console.log("posted")
             } else {
                 setError('posting failed')
@@ -273,9 +284,15 @@ export default function SendName({allDogs}) {
                 required={true}
             />
             {previewSource && <img className='image-preview' src={previewSource} alt='dog'/>}
-            {error === 'missing field' && <div>Kérjük töltsd ki az összes beviteli mezőt!</div>}
-            {error === 'posting failed' && <div>Nem sikerült beküldeni a kutyát.</div>}
+
+            {error === 'missing field' && <div className='sendname-error-message'>Kérjük töltsd ki az összes beviteli mezőt!</div>}
+            {error === 'posting failed' && <div className='sendname-error-message'>Nem sikerült beküldeni a kutyát.</div>}
+            {error === 'dog posted' && <div className='sendname-error-message upload-success'>Sikeres beküldés!</div>}
+            {error === 'image too large' && <div className='sendname-error-message'>Túl nagy a kép mérete - max. méret: 750 kb</div>}
+
             <button onClick={handleSubmit}>Beküldöm a kutyát!</button>
+
+            {isLoading && <Loader />}
         </form>
     )
 }
