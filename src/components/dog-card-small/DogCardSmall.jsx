@@ -2,7 +2,6 @@ import { useState, React } from 'react';
 import './DogCardSmall.css';
 import DogCardLarge from '../dog-card-large/DogCardLarge';
 
-import favouriteIcon from '../../assets/favourite-filled.svg';
 import expandIcon from '../../assets/expand-solid.svg';
 import femaleIcon from '../../assets/female.svg';
 import maleIcon from '../../assets/male.svg';
@@ -59,14 +58,13 @@ export default function DogCardSmall({dog}) {
             </div>
             <div className='card-small-image'>
                 <img className='card-small-dog-image' src={dogImage} alt='dog' />
-                <img className='card-small-favourite-icon' src={favouriteIcon} alt='heart' />
                 <img className='card-small-expand-icon' src={expandIcon} alt='expand' onClick={handleExpand} />
             </div>
         </div>
 
         {isExpanded
         &&
-        <div className='dog-card-large-background' onClick={handleExpand}>
+        <div className='dog-card-large-background'>
             <DogCardLarge dog={dog} handleExpand={handleExpand}/>
         </div>}
         </>

@@ -23,7 +23,6 @@ export default function Login() {
     const passwordRef = useRef();
 
     const [error, setError] = useState('');
-    //console.log(error)
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
@@ -49,7 +48,7 @@ export default function Login() {
             });
 
             if (response.status === 200) {
-                const data = await response.json(); //response: object. .json(): produces a JS object
+                const data = await response.json();
                 setUser(data);
                 logIn();
                 navigate('/profile')

@@ -1,17 +1,21 @@
 import { useState, useEffect, useContext, React } from 'react';
 import './SendName.css';
 
+import Loader from '../../components/loader/Loader';
+
 import AuthContext from '../../contexts/AuthContext';
 
 export default function SendName({allDogs}) {
 
     const { userData } = useContext(AuthContext);
     
+    const [isLoading, setLoading] = useState(false)
     const [dogBreeds, setDogBreeds] = useState([])
     const [inputs, setInputs] = useState({uploader: userData.username, gender: 'fiú', size: 'kicsi', traits: []});
-    const [selectedFile, setSelectedFile] = useState(null);
-    const [error, setError] = useState('')
-    console.log(inputs)
+    
+    const [previewSource, setPreviewSource] = useState()
+
+    const [error, setError] = useState('');
     
     useEffect(() => {
         let dogBreeds = [];
@@ -22,6 +26,10 @@ export default function SendName({allDogs}) {
         })
         setDogBreeds(dogBreeds.sort())
     }, [allDogs])
+
+    useEffect(() => {
+        setInputs((values) => ({...values, "image": previewSource}))
+    }, [previewSource])
     
     // - - - -  input change handler: radio, select - - - - 
     const handleChange = (event) => {
@@ -43,35 +51,58 @@ export default function SendName({allDogs}) {
 
         } else {
             const newTraits = traits.filter(trait => {return trait !== newTrait})
-           //console.log(newTraits)
             setInputs((values) => ({...values, [name]: newTraits}))
         }
     }
 
     // - - - - input change handler: file upload - - - - 
     const handleChangeFile = (event) => {
-        setSelectedFile(event.target.files[0])
+        const file = event.target.files[0];
+        if (file.size > 5242880) {
+            setError('image too large')
+        } else {
+            setError('')
+            previewFile(file);
+        }
     }
-    
+
+    const previewFile = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setPreviewSource(reader.result);
+        }
+    }
+
     // - - - - handle form submit - - - - 
     const handleSubmit = async function(event) {
         event.preventDefault();
 
-        if (!inputs.name) { 
-            setError('missing input')
+        if (!inputs.name || !inputs.breed || !previewSource) {
+            setError('missing field')
             return
         }
 
-        setError('')
-
-        const formData = new FormData();
-        formData.append('file', selectedFile);
-        formData.append('object', JSON.stringify(inputs))
-
-        await fetch('https://doggobase-api.onrender.com/addnewdog', {
-            method: "POST",
-            body: formData
-        })
+        try {
+            setLoading(true);
+            
+            const response = await fetch('https://doggobase-api.onrender.com/addnewdog', {
+                method: "POST",
+                body: JSON.stringify(inputs), 
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            })
+            if (response.status === 200) {
+                setError('dog posted')
+                setLoading(false)
+            } else {
+                setError('posting failed')
+            }
+        } catch (error) {
+            console.error(error)
+            setError('posting failed')
+        }
     }
 
     return (
@@ -252,10 +283,16 @@ export default function SendName({allDogs}) {
                 onChange={handleChangeFile}
                 required={true}
             />
-    
-            {error === 'missing input' && <div className='sendname-error-message'>Kérjük töltsd ki az összes beviteli mezőt!</div>}
+            {previewSource && <img className='image-preview' src={previewSource} alt='dog'/>}
+
+            {error === 'missing field' && <div className='sendname-error-message'>Kérjük töltsd ki az összes beviteli mezőt!</div>}
+            {error === 'posting failed' && <div className='sendname-error-message'>Nem sikerült beküldeni a kutyát.</div>}
+            {error === 'dog posted' && <div className='sendname-error-message upload-success'>Sikeres beküldés!</div>}
+            {error === 'image too large' && <div className='sendname-error-message'>Túl nagy a kép mérete - max. méret: 5 mB</div>}
 
             <button onClick={handleSubmit}>Beküldöm a kutyát!</button>
+
+            {isLoading && <Loader />}
         </form>
     )
 }
