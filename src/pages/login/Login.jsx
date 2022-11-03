@@ -48,7 +48,7 @@ export default function Login() {
             });
 
             if (response.status === 200) {
-                const data = await response.json(); //response: object. .json(): produces a JS object
+                const data = await response.json();
                 setUser(data);
                 logIn();
                 navigate('/profile')
