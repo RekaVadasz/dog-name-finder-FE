@@ -2,24 +2,29 @@
 
 The goal of this React application is to collect common Hungarian dog names and create a database with images and personality traits. This way users can search for names based on given characteristics such as gender, size, etc. or simply browse names. 
 
-Logged in users can also add dogs with pictures and save their favourite dogs.
-
-The backend was created with Node.js and data is stored in Cloud Firestore (data of dogs and user data with encrypted passwords). Images uploaded by users are stored in Cloudinary.
+Logged in users can also add dogs with pictures and save their favourite dogs.:brown_heart:
 
 Backend repository: https://github.com/RekaVadasz/dog-name-finder-BE
 
-## View online: 
+## :computer: View online: 
 
-Project is available at: https://courageous-lokum-e6dc50.netlify.app/
-
+Project is available at: https://courageous-lokum-e6dc50.netlify.app/ </br>
 *Please note that at first load the API response time is slow (30 sec) due to hosting limitations.*
 
-## 	:hammer_and_wrench: Work in progress - features to be implemented: 
+## 	:hammer_and_wrench: Work in progress - steps and future plans: 
 
-- JWT (JSON Web Token) 
-- Display favourite dogs on profile right after marking (for now, favourites are updated only at new login)
-- Responsive design 
-- ...
+:heavy_check_mark: UI design in *Figma*<br/>
+:heavy_check_mark: Create frontend in *React*<br/>
+:heavy_check_mark: Create backend with *node.js*, storing data in JSON<br/>
+:heavy_check_mark: Registration and user authentication through *Cloud Firestore* <br/>
+:heavy_check_mark: Moving dog data to *Firestore* as well<br/>
+:heavy_check_mark: Upload new images from users to *Cloudinary* <br/>
+:heavy_check_mark: Save favourites to user data<br/>
+:heavy_check_mark: Deployment to *Netlify* and *Render*<br/>
+:x: JWT (JSON Web Token)<br/>
+:x: Responsive design<br/>
+    ...
+
 
 ## Run app locally: 
 
