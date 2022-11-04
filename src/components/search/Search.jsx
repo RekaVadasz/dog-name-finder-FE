@@ -27,6 +27,9 @@ export default function Search({allDogs}) {
             border: '2px solid #F17E5B', 
             borderRadius: '6px', 
             margin: '10px 0 5px'
+        }),
+        menu: (styles) => ({...styles, 
+            width: '282px',
         })
     }
 

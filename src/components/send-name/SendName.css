@@ -1,7 +1,7 @@
 @charset "UTF-8";
 form {
   width: 521px;
-  padding: 28px;
+  padding: 31px 28px 24px 44px;
   border-radius: 6px;
   position: relative;
   background-color: #FFFFFF;
@@ -22,7 +22,7 @@ form fieldset .input-hidden {
 }
 
 form fieldset .input-label, form fieldset #name-of-dog {
-  width: 140px;
+  width: 134px;
   height: 42px;
   padding: 10px;
   border: 2px solid #F17E5B;
