@@ -22,11 +22,14 @@ export default function SendName({allDogs}) {
 
     const colorStyles = {
         control: (styles) => ({...styles, 
-            width: '293px',
+            width: '382px',
             height: '42px', 
             border: '2px solid #F17E5B', 
             borderRadius: '6px', 
             margin: '10px 0 5px'
+        }),
+        menu: (styles) => ({...styles, 
+            width: '382px',
         })
     }
 
@@ -197,7 +200,7 @@ export default function SendName({allDogs}) {
 
             <fieldset>
                 <legend>Fajtája:</legend>
-                <CreatableSelect options={options} onChange={handleChangeSelect} styles={colorStyles} placeholder='Válassz egy fajtát'/>
+                <CreatableSelect options={options} onChange={handleChangeSelect} styles={colorStyles} placeholder='Válassz egy fajtát vagy kezdj el gépelni...'/>
             </fieldset>
 
             <fieldset className='traits-checkbox'>
