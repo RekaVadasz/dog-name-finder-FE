@@ -1,13 +1,23 @@
+
+$orange: #F17E5B;
+$breakpoint-screen: 1270px;
+$breakpoint-tablet: 620px;
+
 header {
     width: 100%;
-    height: 72px;
-    padding: 0 75px;
+    //height: 72px;
+    padding: 10px 75px;
     position: fixed;
     top: 0;
     z-index: 1000;
     background-color: #ffffff;
     box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.12);
-    
+    transition: 0.3s;
+
+    @media screen and (max-width: $breakpoint-tablet) {
+        padding: 10px 20px;
+    }
+
     .header-container {
         max-width: 1300px;
         height: 72px;
@@ -17,35 +27,84 @@ header {
         justify-content: space-between;
         align-items: center;
     
-        .navbar-top {
+        .logo {
+            width: 250px;
+            height: 60px;
+            background-image: url('../../assets/logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            transition: transform ease .50s;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+
+            @media screen and (max-width: $breakpoint-tablet){
+                width: 60px;
+                background-image: url('../../assets/logo_head.png');
+            }
+        }
+
+        nav {
             display: flex;
     
-            .logo {
-                width: 250px;
-                height: 60px;
-                background-image: url('../../assets/logo.png');
-                background-size: contain;
-                background-repeat: no-repeat;
-                cursor: pointer;
-            }
-            
-            nav {
-                display: flex;
 
-                ul {
-                    padding: 0 45px;
+            #menu-icon {
+                display: none;
+                font-size: 50px;
+                z-index: 10001;
+                cursor: pointer;
+
+                @media screen and (max-width: $breakpoint-screen){
                     display: flex;
                     align-items: center;
-                    column-gap: 25px;
+                }
+            }
+
+            .icon-open {
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                color: $orange;
+            }
+            
+            ul {
+                display: flex;
+                padding: 0 22px;
+                display: flex;
+                align-items: center;
+                column-gap: 25px;
+                transition: 0.3s;
+
+                @media screen and (max-width: $breakpoint-screen){
+                    position: absolute;
+                    top: -800px;
+                    left: 0;
+                    right: 0;
+                    flex-direction: column;
+                    justify-content: center;
+                    width: 100vw;
+                    background-color: #FFFFFF;
+                    height: 100vh;
         
-                    li {
-                        font-size: 16px;
-                        font-weight: 500;
-                        color: #F17E5B;
-                        cursor: pointer;
-                        list-style-type: none;
+                }
+
+                li {
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: $orange;
+                    cursor: pointer;
+                    list-style-type: none;
+
+                    @media screen and (max-width: $breakpoint-screen){
+                        padding: 29px;
                     }
                 }
+            }
+
+            .menu-open {
+                top: 0;
             }
         }
     
@@ -54,18 +113,27 @@ header {
                 width: 128px;
                 height: 40px;
                 text-align: center;
-                border: 2px solid  #F17E5B;
+                border: 2px solid $orange;
                 border-radius: 6px;
+                transition: ease .50s;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
             }
     
             .login-button {
-                color:#F17E5B;
+                color: $orange;
             }
             
             .register-button {
                 margin-left: 15px;
-                background-color: #F17E5B;
+                background-color: $orange;
                 color: #FFFFFF;
+
+                @media screen and (max-width: $breakpoint-screen){
+                    display: none;
+                }
             }
         }
 
@@ -77,7 +145,7 @@ header {
 
             div {
                 margin-right: 39px;
-                color:#F17E5B;
+                color: $orange;
                 font-weight: 500;
             }
 
@@ -86,4 +154,12 @@ header {
             }
         }
     }    
+}
+
+.scrolled {
+    padding: 0px 75px;
+
+    @media screen and (max-width: $breakpoint-screen){
+        padding: 0px 20px;
+    }
 }

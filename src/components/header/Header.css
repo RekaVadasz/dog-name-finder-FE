@@ -1,13 +1,20 @@
 header {
   width: 100%;
-  height: 72px;
-  padding: 0 75px;
+  padding: 10px 75px;
   position: fixed;
   top: 0;
   z-index: 1000;
   background-color: #ffffff;
   -webkit-box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.12);
           box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.12);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+@media screen and (max-width: 620px) {
+  header {
+    padding: 10px 20px;
+  }
 }
 
 header .header-container {
@@ -29,40 +36,97 @@ header .header-container {
           align-items: center;
 }
 
-header .header-container .navbar-top {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-header .header-container .navbar-top .logo {
+header .header-container .logo {
   width: 250px;
   height: 60px;
   background-image: url("../../assets/logo.png");
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
+  -webkit-transition: -webkit-transform ease .50s;
+  transition: -webkit-transform ease .50s;
+  transition: transform ease .50s;
+  transition: transform ease .50s, -webkit-transform ease .50s;
 }
 
-header .header-container .navbar-top nav {
+header .header-container .logo:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+@media screen and (max-width: 620px) {
+  header .header-container .logo {
+    width: 60px;
+    background-image: url("../../assets/logo_head.png");
+  }
+}
+
+header .header-container nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-header .header-container .navbar-top nav ul {
-  padding: 0 45px;
+header .header-container nav #menu-icon {
+  display: none;
+  font-size: 50px;
+  z-index: 10001;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1270px) {
+  header .header-container nav #menu-icon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+header .header-container nav .icon-open {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: #F17E5B;
+}
+
+header .header-container nav ul {
   display: -webkit-box;
   display: -ms-flexbox;
+  display: flex;
+  padding: 0 22px;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-column-gap: 25px;
           column-gap: 25px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
-header .header-container .navbar-top nav ul li {
+@media screen and (max-width: 1270px) {
+  header .header-container nav ul {
+    position: absolute;
+    top: -800px;
+    left: 0;
+    right: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100vw;
+    background-color: #FFFFFF;
+    height: 100vh;
+  }
+}
+
+header .header-container nav ul li {
   font-size: 16px;
   font-weight: 500;
   color: #F17E5B;
@@ -70,12 +134,29 @@ header .header-container .navbar-top nav ul li {
   list-style-type: none;
 }
 
+@media screen and (max-width: 1270px) {
+  header .header-container nav ul li {
+    padding: 29px;
+  }
+}
+
+header .header-container nav .menu-open {
+  top: 0;
+}
+
 header .header-container .login-register button {
   width: 128px;
   height: 40px;
   text-align: center;
-  border: 2px solid  #F17E5B;
+  border: 2px solid #F17E5B;
   border-radius: 6px;
+  -webkit-transition: ease .50s;
+  transition: ease .50s;
+}
+
+header .header-container .login-register button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 header .header-container .login-register .login-button {
@@ -86,6 +167,12 @@ header .header-container .login-register .register-button {
   margin-left: 15px;
   background-color: #F17E5B;
   color: #FFFFFF;
+}
+
+@media screen and (max-width: 1270px) {
+  header .header-container .login-register .register-button {
+    display: none;
+  }
 }
 
 header .header-container .profile-logout {
@@ -109,5 +196,15 @@ header .header-container .profile-logout div {
 
 header .header-container .profile-logout img {
   cursor: pointer;
+}
+
+.scrolled {
+  padding: 0px 75px;
+}
+
+@media screen and (max-width: 1270px) {
+  .scrolled {
+    padding: 0px 20px;
+  }
 }
 /*# sourceMappingURL=Header.css.map */

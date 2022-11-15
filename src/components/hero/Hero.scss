@@ -1,16 +1,44 @@
+$breakpoint-screen: 1270px;
+$breakpoint-medium: 800px;
+$breakpoint-tablet: 620px;
+
 #hero-section {
     height: 554px;
     display: flex;
 
+    @media screen and (max-width: $breakpoint-tablet){
+        flex-direction: column-reverse;
+    }
+
     .hero-left {
         width: 50%;
         padding-left: 75px;
+
+        @media screen and (max-width: $breakpoint-tablet){
+            width: 100%;
+            padding-left: 20px;
+        }
 
         p {
             font-size: 41px;
             line-height: 60px;
             margin-top: 174px;
             margin-bottom: 30px;
+
+            @media screen and (max-width: $breakpoint-screen){
+                font-size: 26px;
+                line-height: 50px;
+            }
+
+            @media screen and (max-width: $breakpoint-medium){
+                font-size: 22px;
+                line-height: 37px;
+            }
+
+            @media screen and (max-width: $breakpoint-tablet){
+                margin-top: 27px;
+                text-align: center;
+            }
         }
 
         button {
@@ -21,6 +49,12 @@
             color: #FFFFFF;
             text-align: center;
             font-size: 18px;
+
+            @media screen and (max-width: $breakpoint-tablet){
+                position: absolute;
+                left: 50%;
+                transform: scale(0.8) translateX(-50%);
+            }
         }
     }
 
@@ -28,5 +62,11 @@
         width: 50%;
         display: flex;
         align-items: center;
+
+        @media screen and (max-width: $breakpoint-tablet){
+            width: 100%;
+            justify-content: center;
+
+        }
     }
 }

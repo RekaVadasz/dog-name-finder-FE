@@ -5,9 +5,25 @@
   display: flex;
 }
 
+@media screen and (max-width: 620px) {
+  #hero-section {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+}
+
 #hero-section .hero-left {
   width: 50%;
   padding-left: 75px;
+}
+
+@media screen and (max-width: 620px) {
+  #hero-section .hero-left {
+    width: 100%;
+    padding-left: 20px;
+  }
 }
 
 #hero-section .hero-left p {
@@ -15,6 +31,27 @@
   line-height: 60px;
   margin-top: 174px;
   margin-bottom: 30px;
+}
+
+@media screen and (max-width: 1270px) {
+  #hero-section .hero-left p {
+    font-size: 26px;
+    line-height: 50px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #hero-section .hero-left p {
+    font-size: 22px;
+    line-height: 37px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  #hero-section .hero-left p {
+    margin-top: 27px;
+    text-align: center;
+  }
 }
 
 #hero-section .hero-left button {
@@ -27,6 +64,15 @@
   font-size: 18px;
 }
 
+@media screen and (max-width: 620px) {
+  #hero-section .hero-left button {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: scale(0.8) translateX(-50%);
+            transform: scale(0.8) translateX(-50%);
+  }
+}
+
 #hero-section .hero-animation {
   width: 50%;
   display: -webkit-box;
@@ -35,5 +81,14 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media screen and (max-width: 620px) {
+  #hero-section .hero-animation {
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 /*# sourceMappingURL=Hero.css.map */
