@@ -134,9 +134,7 @@ header {
                 @media screen and (max-width: $breakpoint-screen){
                     display: none;
                 }
-            
             }
-
         }
 
         .profile-logout {
@@ -164,5 +162,4 @@ header {
     @media screen and (max-width: $breakpoint-screen){
         padding: 0px 20px;
     }
-
 }
