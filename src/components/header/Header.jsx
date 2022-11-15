@@ -1,4 +1,4 @@
-import { React, useContext } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import { NavLink, useNavigate } from 'react-router-dom';
 
@@ -28,6 +28,16 @@ export default function Header() {
     const navigate = useNavigate();
 
     const { userData, isLoggedIn, logOut } = useContext(AuthContext);
+    const [scroll, setScroll] = useState(false);
+    const [isMenuOpen, setMenuOpen] = useState(false);
+
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            setScroll(window.scrollY > 0);
+            setMenuOpen(false);
+        });
+    }, []); 
+
 
     const headerLogOut = () => {
         logOut();
@@ -35,51 +45,54 @@ export default function Header() {
     }
 
     return (
-        <header>
-            <div className='header-container'>
+        <header className={scroll && 'scrolled'}>
+            <div className='header-container' >
+                <HashLink to='/home'><div className='logo'></div></HashLink>
                 
-                <div className='navbar-top'>
-                    <HashLink to='/home'><div className='logo'></div></HashLink>
-                    <nav>
-                        <ul>
-                            <li>
-                                <HashLink 
-                                    smooth 
-                                    scroll={el => scrollWithOffset(el)}
-                                    to='/home#hero-section'
-                                    >Főoldal
-                                </HashLink>
-                            </li>
-                            <li>
-                                <HashLink 
-                                    smooth 
-                                    scroll={el => scrollWithOffset(el)}
-                                    to='/home#search-section'
-                                    >Névválasztó
-                                </HashLink>
-                            </li>
-                            <li>
-                                <HashLink 
-                                    smooth 
-                                    scroll={el => scrollWithOffset(el)}
-                                    to='/home#random-name-section'
-                                    >Random
-                                </HashLink>
-                            </li>
-                            {!isLoggedIn
-                            &&
-                            <li>
-                                <HashLink 
-                                    smooth 
-                                    scroll={el => scrollWithOffset(el)}
-                                    to='/home#registration-section'
-                                    >Regisztráció
-                                </HashLink>
-                            </li>}
-                            <li onClick={scrollToBottom}>Kontakt</li>
-                        </ul>
-                    </nav>
-                </div>
+                <nav>
+                    <div 
+                        className={`bx ${isMenuOpen ? 'bx-x icon-open' : 'bx-menu'}`}
+                        id="menu-icon"
+                        onClick={() => {setMenuOpen(!isMenuOpen)}}
+                    ></div>
+                    <ul className={isMenuOpen && 'menu-open'}>
+                        <li>
+                            <HashLink 
+                                smooth 
+                                scroll={el => scrollWithOffset(el)}
+                                to='/home#hero-section'
+                                >Főoldal
+                            </HashLink>
+                        </li>
+                        <li>
+                            <HashLink 
+                                smooth 
+                                scroll={el => scrollWithOffset(el)}
+                                to='/home#search-section'
+                                >Névválasztó
+                            </HashLink>
+                        </li>
+                        <li>
+                            <HashLink 
+                                smooth 
+                                scroll={el => scrollWithOffset(el)}
+                                to='/home#random-name-section'
+                                >Random
+                            </HashLink>
+                        </li>
+                        {!isLoggedIn
+                        &&
+                        <li>
+                            <HashLink 
+                                smooth 
+                                scroll={el => scrollWithOffset(el)}
+                                to='/home#registration-section'
+                                >Regisztráció
+                            </HashLink>
+                        </li>}
+                        <li onClick={scrollToBottom}>Kontakt</li>
+                    </ul>
+                </nav>
 
                 {!isLoggedIn 
                 &&
