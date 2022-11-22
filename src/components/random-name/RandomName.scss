@@ -3,6 +3,12 @@
     position: relative;
     /* background-color: #FBFAFE; */
 
+    @media screen and (max-width: 1270px) {
+        padding: 20px;
+        
+    }
+
+
     h2 {
         margin-bottom: 55px;
         font-size: 34px;
@@ -11,6 +17,7 @@
     
     .random-name-text {
         display: flex;
+        flex-direction: column;
 
         p {
             width: 76%;
@@ -18,6 +25,16 @@
             padding-right: 35px;
             font-size: 24px;
             line-height: 50px;
+
+            @media screen and (max-width: 1270px) {
+                width: 100%;
+                padding: 0;
+            }
+
+            @media screen and (max-width: 800px) {
+                font-size: 22px;
+                line-height: 37px;
+            }
         }
     
         button {
@@ -35,6 +52,10 @@
 
     .ball-illustration {
         position: relative;
+
+        @media screen and (max-width: 1270px){
+            display: none;
+        }
 
         div {
             background-repeat: no-repeat;
@@ -101,6 +122,12 @@
         top: 195px;
         background-color: #FFF2EF;
         z-index: 99;
+
+        @media screen and (max-width: 1270px) {
+            position: relative;    
+            top: 27px;  
+            right: 0;      
+        }
     }
 
     .dog-card-large-background {

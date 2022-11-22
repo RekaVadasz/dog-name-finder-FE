@@ -1,12 +1,25 @@
+$breakpoint-screen: 1270px;
+$breakpoint-medium: 800px;
+$breakpoint-tablet: 620px;
+
 #registration-section {
     position: relative;
     height: 866px;
+
+    @media screen and (max-width: $breakpoint-screen){
+        padding: 20px;
+    }
 
     h2 {
         margin-bottom: 55px;
         font-size: 34px;
         font-weight: 500;
         text-align: center;
+
+        @media screen and (max-width: $breakpoint-medium){
+            text-align: left;
+        }
+
     }
 
     p {
@@ -15,6 +28,15 @@
         line-height: 50px;
         text-align: center;
         margin: 0 auto 53px;
+        
+        @media screen and (max-width: $breakpoint-medium){
+            width: 100%;
+            margin: 0 0 20px 0;
+            font-size: 22px;
+            line-height: 37px;
+            text-align: left;
+        }
+
     }
 
     form {
@@ -25,6 +47,12 @@
         border-radius: 6px;
         margin: 0 auto 65px;
         position: relative;
+
+        @media screen and (max-width: $breakpoint-tablet){
+            width: 95%;
+            height: fit-content;
+            padding: 16px;
+        }
 
         legend {
             margin-bottom: 34px;
@@ -85,5 +113,11 @@
         background-image: url('../../assets/jack-russel.png');
         background-repeat: no-repeat;
         background-size: contain;
+
+        @media screen and (max-width: $breakpoint-screen){
+            display: none;
+        }
+    
+
     }
 }

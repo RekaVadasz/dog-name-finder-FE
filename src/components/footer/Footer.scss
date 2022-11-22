@@ -7,6 +7,12 @@ footer {
     align-items: center;
     padding: 0 75px;
     background-color: #FBFAFE;
+
+    @media screen and (max-width: 1270px){
+        padding: 0 20px;
+    }
+
+
     
     .footer-container {
         width: 100%;
@@ -14,6 +20,11 @@ footer {
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
+        align-items: center;
+
+        @media screen and (max-width: 520px) {
+            flex-direction: column-reverse;
+        }
 
         .logo {
             width: 250px;
@@ -37,6 +48,10 @@ footer {
                     display: flex;
                     align-items: center;
                     column-gap: 20px;
+
+                    @media screen and (max-width: 1000px){
+                        display: none;
+                    }
 
                     li {
                         font-size: 16px;

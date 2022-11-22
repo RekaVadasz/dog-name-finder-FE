@@ -1,4 +1,12 @@
+$breakpoint-screen: 1270px;
+$breakpoint-medium: 800px;
+$breakpoint-tablet: 620px;
+
 #search-section {
+
+    @media screen and (max-width: $breakpoint-screen){
+        padding: 0 20px 0;
+    }
 
     h2 {
         margin: 1px  auto 55px;

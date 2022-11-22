@@ -3,11 +3,23 @@
   height: 866px;
 }
 
+@media screen and (max-width: 1270px) {
+  #registration-section {
+    padding: 20px;
+  }
+}
+
 #registration-section h2 {
   margin-bottom: 55px;
   font-size: 34px;
   font-weight: 500;
   text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+  #registration-section h2 {
+    text-align: left;
+  }
 }
 
 #registration-section p {
@@ -18,6 +30,16 @@
   margin: 0 auto 53px;
 }
 
+@media screen and (max-width: 800px) {
+  #registration-section p {
+    width: 100%;
+    margin: 0 0 20px 0;
+    font-size: 22px;
+    line-height: 37px;
+    text-align: left;
+  }
+}
+
 #registration-section form {
   width: 564px;
   height: 501px;
@@ -26,6 +48,16 @@
   border-radius: 6px;
   margin: 0 auto 65px;
   position: relative;
+}
+
+@media screen and (max-width: 620px) {
+  #registration-section form {
+    width: 95%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 16px;
+  }
 }
 
 #registration-section form legend {
@@ -88,5 +120,11 @@
   background-image: url("../../assets/jack-russel.png");
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+@media screen and (max-width: 1270px) {
+  #registration-section .sitting-jack-russel {
+    display: none;
+  }
 }
 /*# sourceMappingURL=Registration.css.map */

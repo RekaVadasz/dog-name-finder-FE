@@ -4,6 +4,12 @@
   /* background-color: #FBFAFE; */
 }
 
+@media screen and (max-width: 1270px) {
+  #random-name-section {
+    padding: 20px;
+  }
+}
+
 #random-name-section h2 {
   margin-bottom: 55px;
   font-size: 34px;
@@ -14,6 +20,10 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 #random-name-section .random-name-text p {
@@ -22,6 +32,20 @@
   padding-right: 35px;
   font-size: 24px;
   line-height: 50px;
+}
+
+@media screen and (max-width: 1270px) {
+  #random-name-section .random-name-text p {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #random-name-section .random-name-text p {
+    font-size: 22px;
+    line-height: 37px;
+  }
 }
 
 #random-name-section .random-name-text button {
@@ -38,6 +62,12 @@
 
 #random-name-section .ball-illustration {
   position: relative;
+}
+
+@media screen and (max-width: 1270px) {
+  #random-name-section .ball-illustration {
+    display: none;
+  }
 }
 
 #random-name-section .ball-illustration div {
@@ -142,6 +172,14 @@
   top: 195px;
   background-color: #FFF2EF;
   z-index: 99;
+}
+
+@media screen and (max-width: 1270px) {
+  #random-name-section .name-card {
+    position: relative;
+    top: 27px;
+    right: 0;
+  }
 }
 
 #random-name-section .dog-card-large-background {
