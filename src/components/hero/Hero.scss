@@ -51,9 +51,10 @@ $breakpoint-tablet: 620px;
             font-size: 18px;
 
             @media screen and (max-width: $breakpoint-tablet){
-                position: absolute;
+                margin-bottom: 53px;
+                position: relative;
                 left: 50%;
-                transform: scale(0.8) translateX(-50%);
+                transform: translateX(-50%) scale(0.8);
             }
         }
     }

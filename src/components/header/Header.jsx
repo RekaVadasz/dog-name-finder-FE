@@ -47,7 +47,7 @@ export default function Header() {
     return (
         <header className={scroll && 'scrolled'}>
             <div className='header-container' >
-                <HashLink to='/home'><div className='logo'></div></HashLink>
+                <HashLink to='/home' className='logo-container'><div className='logo'></div></HashLink>
                 
                 <nav>
                     <div 

@@ -27,22 +27,24 @@ header {
         justify-content: space-between;
         align-items: center;
     
-        .logo {
-            width: 250px;
-            height: 60px;
-            background-image: url('../../assets/logo.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            cursor: pointer;
-            transition: transform ease .50s;
-
-            &:hover {
-                transform: scale(1.1);
+        .logo-container {
+            @media screen and (max-width: $breakpoint-screen){
+                display: none;
             }
 
-            @media screen and (max-width: $breakpoint-tablet){
-                width: 60px;
-                background-image: url('../../assets/logo_head.png');
+            .logo {
+                width: 250px;
+                height: 60px;
+                position: relative;
+                background-image: url('../../assets/logo.png');
+                background-size: contain;
+                background-repeat: no-repeat;
+                cursor: pointer;
+                transition: transform ease .50s;
+    
+                &:hover {
+                    transform: scale(1.1);
+                }
             }
         }
 
@@ -79,13 +81,13 @@ header {
 
                 @media screen and (max-width: $breakpoint-screen){
                     position: absolute;
-                    top: -800px;
+                    top: -100vh;
                     left: 0;
                     right: 0;
                     flex-direction: column;
                     justify-content: center;
                     width: 100vw;
-                    background-color: #FFFFFF;
+                    background-color: #FBFAFE;
                     height: 100vh;
         
                 }
@@ -138,18 +140,18 @@ header {
         }
 
         .profile-logout {
-            width: 149px;
             display: flex;
             justify-content: space-between;
             align-items: center;
 
             div {
-                margin-right: 39px;
+                margin-right: 12px;
                 color: $orange;
                 font-weight: 500;
             }
 
             img {
+                margin-right: 6px;
                 cursor: pointer;
             }
         }

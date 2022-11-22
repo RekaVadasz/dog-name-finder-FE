@@ -36,9 +36,16 @@ header .header-container {
           align-items: center;
 }
 
-header .header-container .logo {
+@media screen and (max-width: 1270px) {
+  header .header-container .logo-container {
+    display: none;
+  }
+}
+
+header .header-container .logo-container .logo {
   width: 250px;
   height: 60px;
+  position: relative;
   background-image: url("../../assets/logo.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -49,16 +56,9 @@ header .header-container .logo {
   transition: transform ease .50s, -webkit-transform ease .50s;
 }
 
-header .header-container .logo:hover {
+header .header-container .logo-container .logo:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
-}
-
-@media screen and (max-width: 620px) {
-  header .header-container .logo {
-    width: 60px;
-    background-image: url("../../assets/logo_head.png");
-  }
 }
 
 header .header-container nav {
@@ -110,7 +110,7 @@ header .header-container nav ul {
 @media screen and (max-width: 1270px) {
   header .header-container nav ul {
     position: absolute;
-    top: -800px;
+    top: -100vh;
     left: 0;
     right: 0;
     -webkit-box-orient: vertical;
@@ -121,7 +121,7 @@ header .header-container nav ul {
         -ms-flex-pack: center;
             justify-content: center;
     width: 100vw;
-    background-color: #FFFFFF;
+    background-color: #FBFAFE;
     height: 100vh;
   }
 }
@@ -176,7 +176,6 @@ header .header-container .login-register .register-button {
 }
 
 header .header-container .profile-logout {
-  width: 149px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -189,12 +188,13 @@ header .header-container .profile-logout {
 }
 
 header .header-container .profile-logout div {
-  margin-right: 39px;
+  margin-right: 12px;
   color: #F17E5B;
   font-weight: 500;
 }
 
 header .header-container .profile-logout img {
+  margin-right: 6px;
   cursor: pointer;
 }
 

@@ -29,3 +29,10 @@ main {
     cursor: url('./assets/paw-cursor.png'), pointer;
 } */
 
+@media screen and (max-width: 1270px) {
+    .paw-animation-container {
+        display: none;
+    }
+    
+}
+
